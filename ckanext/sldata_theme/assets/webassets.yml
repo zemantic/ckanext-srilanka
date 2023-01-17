@@ -1,0 +1,14 @@
+# sldata_theme-js:
+#   filter: rjsmin
+#   output: ckanext-sldata_theme/%(version)s-sldata_theme.js
+#   contents:
+#     - js/sldata_theme.js
+#   extra:
+#     preload:
+#       - base/main
+
+# sldata_theme-css:
+#   filter: cssrewrite
+#   output: ckanext-sldata_theme/%(version)s-sldata_theme.css
+#   contents:
+#     - css/sldata_theme.css

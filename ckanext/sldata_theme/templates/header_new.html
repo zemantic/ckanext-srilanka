@@ -1,0 +1,127 @@
+{% block header_wrapper %} 
+<nav class="navbar navbar-default navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="d-flex align-items-center navbar-brand fs-3" href="/">
+      <img
+        class="me-2"
+        height="48"
+        src="{{ h.url_for_static_or_external(g.site_logo) }}"
+        alt="{{ g.site_title }}"
+        title="{{ g.site_title }}"
+      />
+      <strong>Open Data Portal</strong>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav fw-semi-bold me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Documentation</a>
+        </li> 
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            More
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Terms of user</a></li>
+            <li><a class="dropdown-item" href="#">License</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+      {% block header_account_container_content %} 
+        {% if c.userobj %}
+        <ul class="navbar-nav d-flex">
+          {% block header_account_logged %} {% if c.userobj.sysadmin %}
+          <li class="nav-item">
+            <a class="nav-link"
+              href="{{ h.url_for(controller='admin', action='index') }}"
+              title="{{ _('Sysadmin settings') }}"
+            >
+              <i class="fa fa-gavel" aria-hidden="true"></i>
+              <span class="text">{{ _('Admin') }}</span>
+            </a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link"
+              href="{{ h.url_for('user.read', id=c.userobj.name) }}"
+              class="image"
+              title="{{ _('View profile') }}"
+            >
+              {{ h.user_image((c.user if c and c.user else ''), size=22) }}
+              <span class="username">{{ c.userobj.display_name }}</span>
+            </a>
+          </li>
+          {% set new_activities = h.new_activities() %}
+          <li
+            class="notifications nav-item {% if new_activities > 0 %}notifications-important{% endif %}"
+          >
+            {% set notifications_tooltip = ngettext('Dashboard (%(num)d new
+            item)', 'Dashboard (%(num)d new items)', new_activities) %}
+            <a class="nav-link"
+              href="{{ h.url_for('dashboard.index') }}"
+              title="{{ notifications_tooltip }}"
+            >
+              <i class="fa fa-tachometer" aria-hidden="true"></i>
+              <span class="text">{{ _('Dashboard') }}</span>
+              <span class="badge">{{ new_activities }}</span>
+            </a>
+          </li>
+          {% block header_account_settings_link %}
+          <li class="nav-item">
+            <a class="nav-link"
+              href="{{ h.url_for('user.edit', id=c.userobj.name) }}"
+              title="{{ _('Profile settings') }}"
+            >
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              <span class="text">{{ _('Profile settings') }}</span>
+            </a>
+          </li>
+          {% endblock %} {% block header_account_log_out_link %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              <span class="text">{{ _('Log out') }}</span>
+            </a>
+          </li>
+          {% endblock %} {% endblock %}
+        </ul>
+      </div>
+      {% else %}
+        <ul class="navbar-nav">
+          {% block header_account_notlogged %}
+          <li class="nav-item">{% link_for _('Log in'), named_route='user.login', class_="nav-link" %}</li>
+          {% if h.check_access('user_create') %}
+          <li class="nav-item">
+            {% link_for _('Register'), named_route='user.register', class_='nav-link'
+            %}
+          </li>
+          {% endif %} {% endblock %}
+        </ul>
+
+      {% endif %} {% endblock %}
+    </div>
+  </div>
+</nav>
+
+{% endblock %}
