@@ -14,16 +14,33 @@ Example:
 {% set username_error = true if error_summary %}
 {% set password_error = true if error_summary %}
 
-<form action="{{ action }}" method="post">
-  {{ form.errors(errors=error_summary) }}
-
-  {{ form.input('login', label=_("Username"), id='field-login', value="", error=username_error, classes=["control-medium"]) }}
-
-  {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium"]) }}
+<div class="d-flex justify-content-center mt-4">
+  <img src="/base/images/logo.png" height="128" alt="open data portal">
+</div>
+<form class="bg-white my-2 px-4 py-4 rounded" action="{{ action }}" method="post">
+  {% if session['flash'] %}
+    <div class="alert alert-danger">
+      {{session['flash'][0][1]}}
+    </div>
+  {% endif %}
+  <span>{{error_summary}}</span>
+  <h1 class="h4 text-center mb-4">
+    {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
+  </h1>
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input name="login" type="text" id="login" class="form-control" />
+    <label class="form-label" for="login">Username</label>
+  </div>
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" name="password" id="password" class="form-control" />
+    <label class="form-label" for="password">Password</label>
+  </div>
 
   {{ form.checkbox('remember', label=_("Remember me"), id='field-remember', checked=true, value="63072000") }}
 
-  <div class="form-actions">
+  <div class="form-actions mt-4">
     {% block login_button %}
     <button class="btn btn-primary" type="submit">{{ _('Login') }}</button>
     {% endblock %}
