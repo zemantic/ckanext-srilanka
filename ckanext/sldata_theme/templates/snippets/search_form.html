@@ -9,12 +9,12 @@
 <form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %}" method="get" data-module="select-switch">
 
   {% block search_input %}
-    <div class="input-group search-input-group">
+    <div class="input-group mb-3">
       <input aria-label="{% block header_site_search_label %}{{ placeholder }}{% endblock %}" id="field-giant-search" type="text" class="form-control input-lg" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}">
       {% block search_input_button %}
       <span class="input-group-btn">
-        <button class="btn btn-default btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
-          <i class="fa fa-search"></i>
+        <button class="btn btn-outline-primary" type="submit" value="search" aria-label="{{_('Submit')}}">
+          Search
         </button>
       </span>
       {% endblock %}
