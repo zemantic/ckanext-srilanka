@@ -12,11 +12,9 @@
     <div class="input-group mb-3">
       <input aria-label="{% block header_site_search_label %}{{ placeholder }}{% endblock %}" id="field-giant-search" type="text" class="form-control input-lg" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}">
       {% block search_input_button %}
-      <span class="input-group-btn">
         <button class="btn btn-outline-primary" type="submit" value="search" aria-label="{{_('Submit')}}">
           Search
         </button>
-      </span>
       {% endblock %}
     </div>
   {% endblock %}
