@@ -29,16 +29,16 @@
     {% if sorting %}
       <div class="mb-3">
         <div class="row">
-          <div class="col-8">
+          <div class="col-md-8">
             {% block search_title %}
               {% if not error %}
-                <h1>{% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}</h1>
+                <h1 class="h3">{% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}</h1>
               {% else %}
                 <h2>Error</h2>
               {% endif %}
             {% endblock %}
           </div>
-          <div class="col-4">
+          <div class="col-md-4 g-3 align-items-center">
             <label class="form-label" for="field-order-by">{{ _('Order by') }}</label>
             <select id="field-order-by" name="sort" class="form-select">
               {% for label, value in sorting %}
