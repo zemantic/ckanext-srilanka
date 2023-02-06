@@ -28,26 +28,31 @@
   {% block search_sortby %}
     {% if sorting %}
       <div class="mb-3">
-        <label class="form-label" for="field-order-by">{{ _('Order by') }}</label>
-        <select id="field-order-by" name="sort" class="form-select">
-          {% for label, value in sorting %}
-            {% if label and value %}
-              <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
-            {% endif %}
-          {% endfor %}
-        </select>
-        {% block search_sortby_button %}
-        <button class="btn btn-default js-hide" type="submit">{{ _('Go') }}</button>
-        {% endblock %}
+        <div class="row">
+          <div class="col-8">
+            {% block search_title %}
+              {% if not error %}
+                <h1>{% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}</h1>
+              {% else %}
+                <h2>Error</h2>
+              {% endif %}
+            {% endblock %}
+          </div>
+          <div class="col-4">
+            <label class="form-label" for="field-order-by">{{ _('Order by') }}</label>
+            <select id="field-order-by" name="sort" class="form-select">
+              {% for label, value in sorting %}
+                {% if label and value %}
+                  <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            {% block search_sortby_button %}
+            <button class="btn btn-default js-hide" type="submit">{{ _('Go') }}</button>
+            {% endblock %}
+          </div>
+        </div>
       </div>
-    {% endif %}
-  {% endblock %}
-
-  {% block search_title %}
-    {% if not error %}
-      <h1>{% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}</h1>
-    {% else %}
-      <h2>Error</h2>
     {% endif %}
   {% endblock %}
 
