@@ -31,14 +31,14 @@
 
 {% block subtitle %}{{ _(dataset_type.title()) }}{% endblock %}
 
-<div class="page-header text-white">
-  <div class="container">
-    {% block breadcrumb_content %}
-      <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
-    {% endblock %}
-    <h1 class="text-white capitalized">{{q}}</h1>
-  </div>
-</div>
+
+{% block breadcrumb_content %}
+  <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
+{% endblock %}
+
+{% block title_text %}
+  <h1 class="text-white capitalized">{{q}}</h1>
+{% endblock %}
 
 {% block primary_content %}
   <section class="module">
