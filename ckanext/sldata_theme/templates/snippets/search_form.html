@@ -6,14 +6,6 @@
 {% set no_bottom_border = no_bottom_border if no_bottom_border else false %}
 {% set form_id = form_id if form_id else false %}
 
-{% block toolbar %}
-  <div class="page-header">
-    <div class="container">
-      <h1 class="text-white capitalized">{{query}}</h1>
-    </div>
-  </div>
-{% endblock %}
-
 <form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %}" method="get" data-module="select-switch">
 
   {% block search_input %}
