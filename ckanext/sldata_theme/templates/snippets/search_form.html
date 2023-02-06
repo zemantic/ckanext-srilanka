@@ -38,18 +38,15 @@
               {% endif %}
             {% endblock %}
           </div>
-          <div class="col-md-4 g-3 align-items-center">
-            <label class="form-label" for="field-order-by">{{ _('Order by') }}</label>
-            <select id="field-order-by" name="sort" class="form-select">
+          <div class="col-md-4 g-3 align-items-center d-flex">
+            <label class="form-label w-full" for="field-order-by">{{ _('Order by') }}</label>
+            <select onchange="this.form.submit()" id="field-order-by" name="sort" class="form-select">
               {% for label, value in sorting %}
                 {% if label and value %}
                   <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
                 {% endif %}
               {% endfor %}
             </select>
-            {% block search_sortby_button %}
-            <button class="btn btn-default js-hide" type="submit">{{ _('Go') }}</button>
-            {% endblock %}
           </div>
         </div>
       </div>
