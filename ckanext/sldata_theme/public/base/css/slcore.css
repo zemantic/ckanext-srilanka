@@ -12,6 +12,12 @@ h6 {
   font-weight: 600;
 }
 
+.page-header {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: #0d2e38;
+}
+
 .form-control {
   border-radius: 0%;
 }
