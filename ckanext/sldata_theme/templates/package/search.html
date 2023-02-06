@@ -34,15 +34,10 @@
 {% block toolbar %}
   <div class="page-header text-white">
     <div class="container">
-      {% block breadcrumb %}
-        {% if self.breadcrumb_content() | trim %}
-          <ol class="breadcrumb">
-            {% snippet 'snippets/home_breadcrumb_item.html' %}
-            {% block breadcrumb_content %}{% endblock %}
-          </ol>
-        {% endif %}
+      {% block breadcrumb_content %}
+        <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
       {% endblock %}
-      <h1 class="capitalized">{{q}}</h1>
+      <h1 class="text-white capitalized">{{q}}</h1>
     </div>
   </div>
 {% endblock %}
