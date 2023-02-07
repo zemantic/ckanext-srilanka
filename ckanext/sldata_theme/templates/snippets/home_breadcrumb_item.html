@@ -1,6 +1,9 @@
 {# Used to insert the home icon into a breadcrumb #}
 <li class="home breadcrumb-item">
-  <a href="{{ h.url_for('home.index') }}" aria-label="{{ _('Home') }}"
-    ><i class="fa fa-home"></i><span> {{ _('Home') }}</span></a
+  <a
+    class="text-white"
+    href="{{ h.url_for('home.index') }}"
+    aria-label="{{ _('Home') }}"
+    ><span> {{ _('Home') }}</span></a
   >
 </li>
