@@ -17,7 +17,7 @@
     <div class="module-content">
       {% block page_primary_action %}
         {% if h.check_access('package_create') %}
-          <div class="page_primary_action">
+          <div class="d-md-flex justify-content-end page_primary_action mb-3">
             {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
           </div>
         {% endif %}
