@@ -75,7 +75,7 @@
 
 
 {% block secondary_content %}
-  <div class="filters">
+  <div class="filters px-2">
     <div>
       {% for facet in facet_titles %}
         {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets) }}
