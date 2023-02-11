@@ -57,7 +57,7 @@ Example:
         {% endblock %}
         {% block notes %}
           {% if notes %}
-            <div class="my-2">{{ notes|urlize }}</div>
+            <div class="my-2 fs-5">{{ notes|urlize }}</div>
           {% else %}
             <p class="empty">{{ _("This dataset has no description") }}</p>
           {% endif %}
