@@ -69,12 +69,12 @@ Dictionary with search facets(or `c.search_facets` if not provided)
 								{% set label = label_function(item) if label_function else item.display_name %}
 								{% set label_truncated = h.truncate(label, 22) if not label_function else label %}
 								{% set count = count_label(item['count']) if count_label else ('%d' % item['count']) %}
-								<li class="{{ 'nav-item' }}{% if item.active %} active{% endif %}">
-							<a href="{{ href }}" class="{{ nav_item_class }}" title="{{ label if label != label_truncated else '' }}">
-									<span class="item-label">{{ label_truncated }}</span>
-									<span class="separator visually-hidden"> - </span>
-									<span>{{ count }}</span>
-							</a>
+								<li>
+									<a href="{{ href }}" class="{{ nav_item_class }}{% if item.active %} active{% endif %}" title="{{ label if label != label_truncated else '' }}">
+											<span class="item-label">{{ label_truncated }}</span>
+											<span class="separator visually-hidden"> - </span>
+											<span>{{ count }}</span>
+									</a>
 								</li>
 						{% endfor %}
 							</ul>
