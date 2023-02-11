@@ -1,50 +1,20 @@
-{% extends "page.html" %}
-
-{% block styles %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
-  integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<link rel="stylesheet" href="/base/css/slcore.css" />
-<link rel="stylesheet" href="/base/css/mdb.css" />
-{% endblock %}
-{% block scripts %}
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
-  integrity="sha512-6UofPqm0QupIL0kzS/UIzekR73/luZdC6i/kXDbWnLOJoqwklBK6519iUnShaYceJ0y4FaiPtX/hRnV/X/xlUQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
-  integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<script src="/base/js/mdb.js"></script>
-{% endblock %} 
+{% extends "pagesl.html" %}
 
 {% import 'macros/form.html' as form %}
 
 {% block subtitle %}{{ _(dataset_type.title()) }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
+  <li class="active breadcrumb-item">{{ h.nav_link(_(dataset_type.title() + 's'), class_="text-white", named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
+{% endblock %}
+
+{% block title_text %}
+  <h1 class="text-white capitalized">{{q}}</h1>
 {% endblock %}
 
 {% block primary_content %}
   <section class="module">
     <div class="module-content">
-      {% block page_primary_action %}
-        {% if h.check_access('package_create') %}
-          <div class="page_primary_action">
-            {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
-          </div>
-        {% endif %}
-      {% endblock %}
       {% block form %}
         {% set facets = {
           'fields': fields_grouped,
@@ -98,12 +68,20 @@
 
 
 {% block secondary_content %}
-  <div class="filters">
+  <div class="filters pe-4">
+    {% block page_primary_action %}
+      {% if h.check_access('package_create') %}
+        <div class="d-md-flex justify-content-end page_primary_action mb-3">
+          {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
+        </div>
+      {% endif %}
+    {% endblock %}
+    
     <div>
       {% for facet in facet_titles %}
         {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets) }}
       {% endfor %}
     </div>
-    <a class="close no-text hide-filters"><i class="fa fa-times-circle"></i><span class="text">close</span></a>
+    <a class="close visually-hidden no-text hide-filters"><span class="text">close</span></a>
   </div>
 {% endblock %}

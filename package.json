@@ -1,0 +1,23 @@
+{
+  "name": "ckanext-srilanka",
+  "version": "1.0.0",
+  "description": "NodeJS packages for CKAN implementaiton of open data portal of Sri Lanka",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "sass ./src/scss/slcore.scss ./ckanext/sldata_theme/public/base/css/slcore.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zemantic/ckanext-srilanka.git"
+  },
+  "author": "Rukshan Ranatunge <rukshan@ruky.me>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/zemantic/ckanext-srilanka/issues"
+  },
+  "homepage": "https://github.com/zemantic/ckanext-srilanka#readme",
+  "devDependencies": {
+    "sass": "^1.58.0"
+  }
+}

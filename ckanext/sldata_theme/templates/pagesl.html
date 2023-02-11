@@ -1,9 +1,26 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+  integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link rel="stylesheet" href="/base/css/mdb.css" />
+<link rel="stylesheet" href="/base/css/slcore.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+
 {%- block page -%}
 
   {% block skip %}
-    <div class="sr-only sr-only-focusable hidden"><a href="#content">{{ _('Skip to content') }}</a></div>
+    <div class="sr-only sr-only-focusable visually-hidden"><a href="#content">{{ _('Skip to content') }}</a></div>
   {% endblock %}
 
   {#
@@ -12,13 +29,13 @@
   file.
   #}
   {%- block header %}
-    {% include "header.html" %}
+    {% include "header_new.html" %}
   {% endblock -%}
 
   {# The content block allows you to replace the content of the page if needed #}
   {%- block content %}
     {% block maintag %}<div class="main">{% endblock %}
-      <div id="content" class="container">
+      <div id="content">
         {% block main_content %}
           {% block flash %}
             <div class="flash-messages">
@@ -33,18 +50,23 @@
           {% endblock %}
 
           {% block toolbar %}
-            <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
-              {% block breadcrumb %}
-                {% if self.breadcrumb_content() | trim %}
-                  <ol class="breadcrumb">
-                    {% snippet 'snippets/home_breadcrumb_item.html' %}
-                    {% block breadcrumb_content %}{% endblock %}
-                  </ol>
-                {% endif %}
-              {% endblock %}
+            <div class="page-header mb-4 text-white">
+              <div class="container">
+                <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
+                  {% block breadcrumb %}
+                    {% if self.breadcrumb_content() | trim %}
+                      <ol class="breadcrumb">
+                        {% snippet 'snippets/home_breadcrumb_item.html' %}
+                        {% block breadcrumb_content %}{% endblock %}
+                      </ol>
+                    {% endif %}
+                  {% endblock %}
+                </div>
+                {% block title_text %}{% endblock %}
+              </div>
             </div>
           {% endblock %}
-
+          <div class="container">
           <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' or c.action=='resource_read' %} no-nav{% endif %}">
             {#
             The pre_primary block can be used to add content to before the
@@ -52,7 +74,6 @@
             #}
             {% block pre_primary %}
             {% endblock %}
-
             {% block secondary %}
               <aside class="secondary col-sm-3">
                 {#
@@ -112,6 +133,7 @@
               </div>
             {% endblock %}
           </div>
+          </div>
         {% endblock %}
       </div>
     </div>
@@ -128,6 +150,19 @@
 {%- endblock -%}
 
 {%- block scripts %}
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
+    integrity="sha512-6UofPqm0QupIL0kzS/UIzekR73/luZdC6i/kXDbWnLOJoqwklBK6519iUnShaYceJ0y4FaiPtX/hRnV/X/xlUQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+    integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="/base/js/mdb.js"></script>
   {% asset 'base/main' %}
   {% asset 'base/ckan' %}
   {% if g.tracking_enabled %}

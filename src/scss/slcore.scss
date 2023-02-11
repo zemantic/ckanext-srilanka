@@ -1,3 +1,5 @@
+$colorPrimary: #009688;
+
 body {
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -14,25 +16,25 @@ h6 {
 .page-header {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #009688;
+  background: $colorPrimary;
 }
 
 .form-control {
   border-radius: 0%;
 }
 
-.nav-pills .nav-link {
-  font-weight: 600;
-  border-radius: 0%;
-}
-.nav-pills .active {
-  border-left: 4px solid;
-  border-left-color: #009688;
-  background-color: #eee;
+.nav-pills {
+  .nav-link {
+    font-weight: 600;
+    border-radius: 0%;
+  }
+  .active {
+    border-left: 4px solid;
+    border-left-color: $colorPrimary;
+    background-color: #eee;
+  }
 }
 
 .dataset-item {
   border-bottom: 1px solid #eee;
 }
-
-/*# sourceMappingURL=slcore.css.map */

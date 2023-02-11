@@ -17,13 +17,15 @@ Example:
 {% set truncate_title = truncate_title or 80 %}
 {% set title = package.title or package.name %}
 {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
+{% set last_modified = package.metadata_modified %}
+{% set orgnaization_name = package.organization.name %}
 
 {% block package_item %}
-  <li class="{{ item_class or "dataset-item" }}">
+  <li class="{{ item_class or "dataset-item" }} mb-4 pt-2 pb-4">
     {% block content %}
       <div class="dataset-content">
         {% block heading %}
-          <h2 class="dataset-heading">
+          <h2 class="h4 my-2 dataset-heading">
             {% block heading_private %}
               {% if package.private %}
                 <span class="dataset-private label label-inverse">
@@ -45,6 +47,9 @@ Example:
             {% endblock %}
           </h2>
         {% endblock %}
+        {% block organization %}
+          <span class="fs-6 text-muted">{{ orgnaization_name }}</span>
+        {% endblock %}
         {% block banner %}
           {% if banner %}
             <span class="banner">{{ _('Popular') }}</span>
@@ -52,10 +57,15 @@ Example:
         {% endblock %}
         {% block notes %}
           {% if notes %}
-            <div>{{ notes|urlize }}</div>
+            <div class="my-2 fs-5">{{ notes|urlize }}</div>
           {% else %}
             <p class="empty">{{ _("This dataset has no description") }}</p>
           {% endif %}
+        {% endblock %}
+        {% block result_metadata %}
+          <div>
+            <p class="fs-6">Last Updated: <span class="text-muted">{{ last_modified }}</span></p>
+          </div>
         {% endblock %}
       </div>
       {% block resources %}
@@ -65,7 +75,7 @@ Example:
               {% block resources_inner %}
                 {% for resource in h.dict_list_reduce(package.resources, 'format') %}
                 <li>
-                  <a href="{{ h.url_for(package.type ~ '.read', id=package.name) }}" class="label label-default" data-format="{{ resource.lower() }}">{{ resource }}</a>
+                  <a href="{{ h.url_for(package.type ~ '.read', id=package.name) }}" class="badge badge-success" data-format="{{ resource.lower() }}">{{ resource }}</a>
                 </li>
                 {% endfor %}
               {% endblock %}
