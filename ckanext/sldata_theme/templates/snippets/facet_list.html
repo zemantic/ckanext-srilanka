@@ -41,7 +41,7 @@ Dictionary with search facets(or `c.search_facets` if not provided)
 
 #}
 {% set nav_class = 'nav nav-pills flex-column' %}
-{% set nav_item_class = 'nav-link' %}
+{% set nav_item_class = '' %}
 {% block facet_list %}
     {% set hide_empty = hide_empty or false %}
     {% with items = items or h.get_facet_items_dict(name, search_facets or c.search_facets) %}
@@ -70,7 +70,7 @@ Dictionary with search facets(or `c.search_facets` if not provided)
 								{% set label_truncated = h.truncate(label, 22) if not label_function else label %}
 								{% set count = count_label(item['count']) if count_label else ('%d' % item['count']) %}
 								<li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %}">
-							<a href="{{ href }}" title="{{ label if label != label_truncated else '' }}">
+							<a href="{{ href }}" class="{{ nav_item_class }}" title="{{ label if label != label_truncated else '' }}">
 									<span class="item-label">{{ label_truncated }}</span>
 									<span class="separator visually-hidden"> - </span>
 									<span>{{ count }}</span>
