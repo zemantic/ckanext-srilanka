@@ -40,7 +40,8 @@ search_facets
 Dictionary with search facets(or `c.search_facets` if not provided)
 
 #}
-{% set nav_class = 'nav nav-pulls flex-column' %}
+{% set nav_class = 'nav nav-pills flex-column' %}
+{% set nav_item_class = 'nav-link' %}
 {% block facet_list %}
     {% set hide_empty = hide_empty or false %}
     {% with items = items or h.get_facet_items_dict(name, search_facets or c.search_facets) %}
