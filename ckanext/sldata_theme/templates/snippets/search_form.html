@@ -39,8 +39,8 @@
             {% endblock %}
           </div>
           <div class="col-md-5 align-items-center d-flex">
-            <label class="form-label" for="field-order-by">{{ _('Order by') }}</label>
-            <select onchange="this.form.submit()" id="field-order-by" name="sort" class="form-select">
+            <label class="form-label w-25" for="field-order-by">{{ _('Order by') }}</label>
+            <select onchange="this.form.submit()" id="field-order-by" name="sort" class="form-select w-75">
               {% for label, value in sorting %}
                 {% if label and value %}
                   <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
