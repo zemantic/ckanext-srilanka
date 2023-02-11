@@ -15,13 +15,6 @@
 {% block primary_content %}
   <section class="module">
     <div class="module-content">
-      {% block page_primary_action %}
-        {% if h.check_access('package_create') %}
-          <div class="d-md-flex justify-content-end page_primary_action mb-3">
-            {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
-          </div>
-        {% endif %}
-      {% endblock %}
       {% block form %}
         {% set facets = {
           'fields': fields_grouped,
@@ -76,6 +69,14 @@
 
 {% block secondary_content %}
   <div class="filters pe-4">
+    {% block page_primary_action %}
+      {% if h.check_access('package_create') %}
+        <div class="d-md-flex justify-content-end page_primary_action mb-3">
+          {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
+        </div>
+      {% endif %}
+    {% endblock %}
+    
     <div>
       {% for facet in facet_titles %}
         {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets) }}
