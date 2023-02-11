@@ -26,8 +26,9 @@ h6 {
   border-radius: 0%;
 }
 .nav-pills .active {
-  border-left: 5px;
+  border-left: 4px;
   border-left-color: #009688;
+  background-color: #eee;
 }
 
 /*# sourceMappingURL=slcore.css.map */

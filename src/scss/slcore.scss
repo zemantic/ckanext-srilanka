@@ -27,8 +27,10 @@ h6 {
   .nav-link {
     font-weight: 600;
     border-radius: 0%;
-  }.active {
-    border-left: 5px;
+  }
+  .active {
+    border-left: 4px;
     border-left-color: $colorPrimary;
+    background-color: #eee;
   }
 }
