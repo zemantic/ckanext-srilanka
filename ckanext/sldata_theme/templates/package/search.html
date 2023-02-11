@@ -5,7 +5,7 @@
 {% block subtitle %}{{ _(dataset_type.title()) }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active breadcrumb-item">{{ h.nav_link(_(dataset_type.title() + 's'), _class="text-white", named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
+  <li class="active breadcrumb-item">{{ h.nav_link(_(dataset_type.title() + 's'), class="text-white", named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
 {% endblock %}
 
 {% block title_text %}
