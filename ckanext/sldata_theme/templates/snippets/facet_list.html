@@ -56,7 +56,7 @@ Dictionary with search facets(or `c.search_facets` if not provided)
 					{% block facet_list_heading %}
 					<h5 class="mb-3">
 						{% set title = title or h.get_facet_title(name) %}
-						{% if title == 'Groups'} {% set title = 'Categories' %}{% endif %}
+						{% if title == 'Groups' %} {% set title = 'Categories' %}{% endif %}
 						{{ title }}
 				</h5>
 					{% endblock %}
