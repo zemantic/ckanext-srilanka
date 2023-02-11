@@ -1,3 +1,5 @@
+$colorPrimary: #009688;
+
 body {
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -14,11 +16,9 @@ h6 {
 .page-header {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #009688;
+  background: $colorPrimary;
 }
 
 .form-control {
   border-radius: 0%;
 }
-
-/*# sourceMappingURL=slcore.css.map */
