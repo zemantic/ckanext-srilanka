@@ -45,8 +45,8 @@ Dictionary with search facets(or `c.search_facets` if not provided)
     {% set hide_empty = hide_empty or false %}
     {% with items = items or h.get_facet_items_dict(name, search_facets or c.search_facets) %}
 	{% if items or not hide_empty %}
+			{% set nav_class = 'nav nav-pills flex-column' %}
 	    {% if within_tertiary %}
-				{% set nav_class = 'nav nav-pills flex-column' %}
 				{% set nav_item_class = ' ' %}
 				{% set wrapper_class = 'nav-facet nav-facet-tertiary' %}
 	    {% endif %}
