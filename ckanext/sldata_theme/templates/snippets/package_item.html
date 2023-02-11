@@ -52,10 +52,15 @@ Example:
         {% endblock %}
         {% block notes %}
           {% if notes %}
-            <div>{{ notes|urlize }}</div>
+            <div class="my-2">{{ notes|urlize }}</div>
           {% else %}
             <p class="empty">{{ _("This dataset has no description") }}</p>
           {% endif %}
+        {% endblock %}
+        {% block result_metadata %}
+          <div>
+            <p class="fs-6">Last Updated: <span class="text-muted">{{ metadata_modified }}</span></p>
+          </div>
         {% endblock %}
       </div>
       {% block resources %}
