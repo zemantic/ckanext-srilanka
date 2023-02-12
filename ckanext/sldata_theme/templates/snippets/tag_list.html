@@ -10,9 +10,9 @@
 #}
 {% set _class = _class or 'tag-list' %}
 {% block tag_list %}
-  <ul class="{{ _class }}">
+  <ul class="{{ _class }} inline-list">
     {% for tag in tags %}
-      <li>
+      <li class="inline-list-item">
         <a class="{% block tag_list_item_class %}tag{% endblock %} badge badge-secondary" href="{% url_for 'dataset.search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
       </li>
     {% endfor %}
