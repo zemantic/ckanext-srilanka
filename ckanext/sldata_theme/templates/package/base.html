@@ -3,7 +3,7 @@
 {% set pkg = pkg_dict %}
 {% set dataset_type = dataset_type or pkg.type or 'dataset' %}
 
-{% block breadcrumb_content_selected %} class="active"{% endblock %}
+{% block breadcrumb_content_selected %} class="active breadcrumb-item"{% endblock %}
 
 {% block subtitle %}{{ _(dataset_type.title()) }}{% endblock %}
 
@@ -13,14 +13,14 @@
     {% if pkg.organization %}
       {% set organization = h.get_translated(pkg.organization, 'title') or pkg.organization.name %}
       {% set group_type = pkg.organization.type %}
-      <li>{% link_for _('Organizations'), class_="text-white", named_route=pkg.organization.type ~ '.index' %}</li>
-      <li>{% link_for organization|truncate(30), class_="text-white", named_route=pkg.organization.type ~ '.read', id=pkg.organization.name %}</li>
+      <li class="breadcrumb-item">{% link_for _('Organizations'), class_="text-white", named_route=pkg.organization.type ~ '.index' %}</li>
+      <li class="breadcrumb-item">{% link_for organization|truncate(30), class_="text-white", named_route=pkg.organization.type ~ '.read', id=pkg.organization.name %}</li>
     {% else %}
-      <li>{% link_for _(dataset_type.title()), class_="text-white", named_route=dataset_type ~ '.search' %}</li>
+      <li class="breadcrumb-item">{% link_for _(dataset_type.title()), class_="text-white", named_route=dataset_type ~ '.search' %}</li>
     {% endif %}
-    <li{{ self.breadcrumb_content_selected() }}>{% link_for dataset|truncate(30), class_="text-white", named_route=pkg.type ~ '.read', id=pkg.id if is_activity_archive else pkg.name %}</li>
+    <li{{ self.breadcrumb_content_selected() }} class="breadcrumb-item">{% link_for dataset|truncate(30), class_="text-white", named_route=pkg.type ~ '.read', id=pkg.id if is_activity_archive else pkg.name %}</li>
   {% else %}
-    <li>{% link_for _(dataset_type.title()), class_="text-white", named_route=dataset_type ~ '.search' %}</li>
-    <li class="active"><a href="" class="text-white">{{ _('Create Dataset') }}</a></li>
+    <li class="breadcrumb-item">{% link_for _(dataset_type.title()), class_="text-white", named_route=dataset_type ~ '.search' %}</li>
+    <li class="breadcrumb-item" class="active"><a href="" class="text-white">{{ _('Create Dataset') }}</a></li>
   {% endif %}
 {% endblock %}
