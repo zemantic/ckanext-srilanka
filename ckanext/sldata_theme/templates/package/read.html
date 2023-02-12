@@ -3,7 +3,17 @@
 {% set org_url = h.url_for(pkg_dict.organization.type + '.read', id=pkg_dict.organization.name, ) %}
 
 {% block title_text %} 
-  <h1 class="text-white capitalized">{{ pkg_dict.title }}</h1>
+  <h1 class="text-white">
+    {% block page_heading %}
+      {{ h.dataset_display_name(pkg) }}
+      {% if pkg.state.startswith('draft') %}
+        [{{ _('Draft') }}]
+      {% endif %}
+      {% if pkg.state == 'deleted' %}
+        [{{ _('Deleted') }}]
+      {% endif %}
+    {% endblock %}
+  </h1>
 {% endblock %}
 
 {% block pre_primary %}
@@ -52,17 +62,7 @@
         </div>
       {% endif %}
     {% endblock %}
-    <h1>
-      {% block page_heading %}
-        {{ h.dataset_display_name(pkg) }}
-        {% if pkg.state.startswith('draft') %}
-          [{{ _('Draft') }}]
-        {% endif %}
-        {% if pkg.state == 'deleted' %}
-          [{{ _('Deleted') }}]
-        {% endif %}
-      {% endblock %}
-    </h1>
+
     {% block package_notes %}
       {% if pkg.notes %}
         <div class="notes my-4 embedded-content">
