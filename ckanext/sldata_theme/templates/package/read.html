@@ -1,5 +1,7 @@
 {% extends "package/read_base_sl.html" %}
 
+{% set org_url = h.url_for(pkg_dict.organization.type + '.read', id=pkg_dict.organization.name, ) %}
+
 {% block title_text %} 
   <h1 class="text-white capitalized">{{ pkg_dict.title }}</h1>
 {% endblock %}
@@ -17,7 +19,9 @@
       </div>
       <div class="col">
         <p class="fs-5 fw-semi-bold">Organization</p>
-        <p class="text-muted">{{ pkg_dict.organization.title }}</p>
+        <p class="text-muted">
+          <a href="{{ org_url }}">pkg_dict.organization.title }}</a>
+        </p>
       </div>
       <div class="col">
         <p class="fs-5 fw-semi-bold">Categories</p>
