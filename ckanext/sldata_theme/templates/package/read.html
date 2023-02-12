@@ -47,10 +47,12 @@
   {{ super() }}
   {% block package_description %}
     {% if pkg.private %}
+    <div>
       <span class="badge badge-danger">
         <i class="fa fa-lock"></i>
         {{ _('Private') }}
       </span>
+    </div>
     {% endif %}
     {% block package_archive_notice %}
       {% if is_activity_archive %}
@@ -67,7 +69,7 @@
       {% if pkg.notes %}
         <div class="notes my-4 embedded-content">
           <h2 class="h2">Description</h2>
-          <div class="my-3">
+          <div class="my-3 lead">
             {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
           </div>
         </div>
