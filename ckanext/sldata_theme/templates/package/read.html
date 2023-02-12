@@ -1,112 +1,68 @@
-{% extends "package/read_base_sl.html" %}
-
-{% set org_url = h.url_for(pkg_dict.organization.type + '.read', id=pkg_dict.organization.name, ) %}
-
-{% block title_text %} 
-  <h1 class="text-white capitalized">{{ pkg_dict.title }}</h1>
-{% endblock %}
-
-{% block pre_primary %}
-  <div class="container my-3">
-    <div class="row">
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Last Updated</p>
-        <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Terms of Use</p>
-        <p class="text-muted"></p>
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Organization</p>
-        <p class="text-muted">
-          <a href="{{ org_url }}">{{ pkg_dict.organization.title }}</a>
-        </p>
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Categories</p>
-        
-      </div>
+{% extends "package/read_base_sl.html" %} {% set org_url =
+h.url_for(pkg_dict.organization.type + '.read', id=pkg_dict.organization.name, )
+%} {% block title_text %}
+<h1 class="text-white capitalized">{{ pkg_dict.title }}</h1>
+{% endblock %} {% block pre_primary %}
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <p class="fs-5 fw-semi-bold">Last Updated</p>
+      <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
+    </div>
+    <div class="col">
+      <p class="fs-5 fw-semi-bold">Terms of Use</p>
+      <p class="text-muted"></p>
+    </div>
+    <div class="col">
+      <p class="fs-5 fw-semi-bold">Organization</p>
+      <p class="text-muted">
+        <a href="{{ org_url }}">{{ pkg_dict.organization.title }}</a>
+      </p>
+    </div>
+    <div class="col">
+      <p class="fs-5 fw-semi-bold">Categories</p>
     </div>
   </div>
-{% endblock %}
-
-{% block primary_content_inner %}
-  {{ super() }}
-  {% block package_description %}
-    {% if pkg.private %}
-      <span class="dataset-private label label-inverse pull-right">
-        <i class="fa fa-lock"></i>
-        {{ _('Private') }}
-      </span>
-    {% endif %}
-    {% block package_archive_notice %}
-      {% if is_activity_archive %}
-        <div class="alert alert-danger">
-          {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %}
-          You're currently viewing an old version of this dataset. To see the
-          current version, click <a href="{{ url }}">here</a>.
-          {% endtrans %}
-        </div>
-      {% endif %}
-    {% endblock %}
-    <h1>
-      {% block page_heading %}
-        {{ h.dataset_display_name(pkg) }}
-        {% if pkg.state.startswith('draft') %}
-          [{{ _('Draft') }}]
-        {% endif %}
-        {% if pkg.state == 'deleted' %}
-          [{{ _('Deleted') }}]
-        {% endif %}
-      {% endblock %}
-    </h1>
-    {% block package_notes %}
-      {% if pkg.notes %}
-        <div class="notes my-4 embedded-content">
-          <h2 class="h2">Description</h2>
-          <div class="my-3">
-            {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
-          </div>
-        </div>
-      {% endif %}
-    {% endblock %}
-
-    {% block package_tags %}
-      <div class="my-2">
-        {% snippet "package/snippets/tags.html", tags=pkg.tags %}
-      </div>
-    {% endblock %}
-    {# FIXME why is this here? seems wrong #}
-    <span class="insert-comment-thread"></span>
-  {% endblock %}
-
-  {% block package_resources %}
-    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
-  {% endblock %}
-
-  {% block package_additional_info %}
-    {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
-  {% endblock %}
-
-
-
-  {% block package_info %}
-    {% snippet 'package/snippets/info.html', pkg=pkg %}
-  {% endblock %}
-
-  {% block package_organization %}
-    {% if pkg.organization %}
-      {% set org = h.get_organization(pkg.organization.id) %}
-      {% snippet "snippets/organization.html", organization=org, has_context_title=true %}
-    {% endif %}
-  {% endblock %}
-
-  {% block package_social %}
-    {% snippet "snippets/social.html" %}
-  {% endblock %}
-
-  {% block package_license %}
-    {% snippet "snippets/license.html", pkg_dict=pkg %}
-  {% endblock %}
-{% endblock %}
+</div>
+{% endblock %} {% block primary_content_inner %} {{ super() }} {% block
+package_description %} {% if pkg.private %}
+<span class="dataset-private label label-inverse pull-right">
+  <i class="fa fa-lock"></i>
+  {{ _('Private') }}
+</span>
+{% endif %} {% block package_archive_notice %} {% if is_activity_archive %}
+<div class="alert alert-danger">
+  {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %} You're currently
+  viewing an old version of this dataset. To see the current version, click
+  <a href="{{ url }}">here</a>. {% endtrans %}
+</div>
+{% endif %} {% endblock %}
+<h1>
+  {% block page_heading %} {{ h.dataset_display_name(pkg) }} {% if
+  pkg.state.startswith('draft') %} [{{ _('Draft') }}] {% endif %} {% if
+  pkg.state == 'deleted' %} [{{ _('Deleted') }}] {% endif %} {% endblock %}
+</h1>
+{% block package_notes %} {% if pkg.notes %}
+<div class="notes my-4 embedded-content">
+  <h2 class="h2">Description</h2>
+  <div class="my-3">
+    {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+  </div>
+</div>
+{% endif %} {% endblock %} {% block package_tags %}
+<div class="my-2">
+  {% snippet "package/snippets/tags.html", tags=pkg.tags %}
+</div>
+{% endblock %} {# FIXME why is this here? seems wrong #}
+<span class="insert-comment-thread"></span>
+{% endblock %} {% block package_resources %} {% snippet
+"package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources,
+is_activity_archive=is_activity_archive %} {% endblock %} {% block
+package_additional_info %} {% snippet "package/snippets/additional_info.html",
+pkg_dict=pkg %} {% endblock %} {% block package_info %} {% snippet
+'package/snippets/info.html', pkg=pkg %} {% endblock %} {% block
+package_organization %} {% if pkg.organization %} {% set org =
+h.get_organization(pkg.organization.id) %} {% snippet
+"snippets/organization.html", organization=org, has_context_title=true %} {%
+endif %} {% endblock %} {% block package_social %} {% snippet
+"snippets/social.html" %} {% endblock %} {% endblock %}
