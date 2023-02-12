@@ -1,5 +1,9 @@
 {% extends "package/read_base_sl.html" %}
 
+{% block title_text %} 
+  <h1 class="text-white capitalized">{{ package.title }}</h1>
+{% endblock %}
+
 {% block primary_content_inner %}
   {{ super() }}
   {% block package_description %}
