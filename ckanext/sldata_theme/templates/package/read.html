@@ -60,10 +60,18 @@
     {% block package_notes %}
       {% if pkg.notes %}
         <div class="notes my-4 embedded-content">
-          <h2 class="h3">Description</h2>
-          {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+          <h2 class="h2">Description</h2>
+          <div class="my-3">
+            {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+          </div>
         </div>
       {% endif %}
+    {% endblock %}
+
+    {% block package_tags %}
+      <div class="my-2">
+        {% snippet "package/snippets/tags.html", tags=pkg.tags %}
+      </div>
     {% endblock %}
     {# FIXME why is this here? seems wrong #}
     <span class="insert-comment-thread"></span>
@@ -71,10 +79,6 @@
 
   {% block package_resources %}
     {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
-  {% endblock %}
-
-  {% block package_tags %}
-    {% snippet "package/snippets/tags.html", tags=pkg.tags %}
   {% endblock %}
 
   {% block package_additional_info %}
