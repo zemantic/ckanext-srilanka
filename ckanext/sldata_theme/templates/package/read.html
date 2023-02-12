@@ -4,29 +4,30 @@
   <h1 class="text-white capitalized">{{ pkg_dict.title }}</h1>
 {% endblock %}
 
-{% block primary_content_inner %}
-  {% block dataset_metadata %}
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <p class="fs-5 fw-bold">Last Updated</p>
-          <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
-        </div>
-        <div class="col">
-          <p class="fs-5 fw-bold">Terms of Use</p>
-          <p class="text-muted"></p>
-        </div>
-        <div class="col">
-          <p class="fs-5 fw-bold">Organization</p>
-          <p class="text-muted">{{ pkg_dict.organization.name }}</p>
-        </div>
-        <div class="col">
-          <p class="fs-5 fw-bold">Categories</p>
-          
-        </div>
+{% block pre_primary %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="fs-5 fw-bold">Last Updated</p>
+        <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
+      </div>
+      <div class="col">
+        <p class="fs-5 fw-bold">Terms of Use</p>
+        <p class="text-muted"></p>
+      </div>
+      <div class="col">
+        <p class="fs-5 fw-bold">Organization</p>
+        <p class="text-muted">{{ pkg_dict.organization.name }}</p>
+      </div>
+      <div class="col">
+        <p class="fs-5 fw-bold">Categories</p>
+        
       </div>
     </div>
-  {% endblock %}
+  </div>
+{% endblock %}
+
+{% block primary_content_inner %}
   {{ super() }}
   {% block package_description %}
     {% if pkg.private %}
