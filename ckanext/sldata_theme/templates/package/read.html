@@ -4,6 +4,29 @@
   <h1 class="text-white capitalized">{{ pkg_dict.title }}</h1>
 {% endblock %}
 
+{% block dataset_metadata %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="font-weight-bold">Last Updated</p>
+        <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
+      </div>
+      <div class="col">
+        <p class="font-weight-bold">Terms of Use</p>
+        <p class="text-muted"></p>
+      </div>
+      <div class="col">
+        <p class="font-weight-bold">Organization</p>
+        <p class="text-muted">{{ pkg_dict.organization.name }}</p>
+      </div>
+      <div class="col">
+        <p class="font-weight-bold">Categories</p>
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
 {% block primary_content_inner %}
   {{ super() }}
   {% block package_description %}
