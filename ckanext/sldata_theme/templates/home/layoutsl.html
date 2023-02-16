@@ -1,18 +1,18 @@
 {% set stats = h.get_site_statistics() %}
-<div class="p-5" style="background-color: #009688; height: 360px">
+<div class="p-5 home-hero">
   <div class="container">
     <div class="row">
       <div class="col">
-        <h2 class="fw-bold h1 lh-base">
+        <h2 class="fw-bold h1 text-white lh-base">
           Open Data Portal Ministry of Health Sri Lanka
         </h2>
         <a class="btn btn-outline-light">Learn more about data.health.gov.lk</a>
       </div>
       <div class="col text-end">
-        <h2 class="fw-bold display-3">
+        <h2 class="fw-bold display-3 text-white">
           {{ h.SI_number_span(stats.dataset_count) }}
         </h2>
-        <p class="fw-lighter">Datasets</p>
+        <p class="fw-lighter text-white">Datasets</p>
         {% block search %} {% snippet 'home/snippets/search.html' %} {% endblock
         %}
       </div>
