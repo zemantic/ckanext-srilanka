@@ -41,9 +41,11 @@ h6 {
 
 .home-hero {
   background-color: $colorPrimary;
-  background-image: url("/base/lk-03.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: contain;
   height: 360px;
+  .container {
+    height: 100%;
+    background-image: linear-gradient(transparent,transparent),url(/base/images/lk-03.svg);
+    background-position: right;
+    background-repeat: none;  
+  }
 }
