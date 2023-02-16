@@ -35,4 +35,13 @@ h6 {
   border-bottom: 1px solid #eee;
 }
 
+.home-hero {
+  background-color: #009688;
+  background-image: url("/base/lk-03.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  height: 360px;
+}
+
 /*# sourceMappingURL=slcore.css.map */
