@@ -41,7 +41,7 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-6">
-          <div class="my-4">
+          <div class="my-4 d-flex justify-content-md-center">
             <img src="/base/images/logo.png" height="128" alt="open data portal">
           </div>
           <h1 class="h4 text-center mb-2">
@@ -53,4 +53,8 @@
       </div>
     </div>
   {% endblock %}
+
+  {%- block footer %}
+    {% include "footer.html" %}
+  {% endblock -%}
 {% endblock %}
