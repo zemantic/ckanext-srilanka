@@ -8,13 +8,11 @@
   {{ form.input("password1", id="field-password", label=_("Password"), type="password", placeholder="••••••••", value=data.password1, error=errors.password1, classes=["form-outline"], is_required=True) }}
   {{ form.input("password2", id="field-confirm-password", label=_("Confirm"), type="password", placeholder="••••••••", value=data.password2, error=errors.password2, classes=["form-outline"], is_required=True) }}
 
+  {# Disabled profile picture
   {% set is_upload = data.image_url and not data.image_url.startswith('http') %}
   {% set is_url = data.image_url and data.image_url.startswith('http') %}
-
-  {{ form.image_upload(data, errors, is_upload_enabled=h.uploads_enabled(), is_url=is_url, is_upload=is_upload, upload_label=_('Profile picture'), url_label=_('Profile picture URL')) }}
-
-
-
+    {{ form.image_upload(data, errors, is_upload_enabled=h.uploads_enabled(), is_url=is_url, is_upload=is_upload, upload_label=_('Profile picture'), url_label=_('Profile picture URL')) }}
+  #}
 
   {% if g.recaptcha_publickey %}
     {% snippet "user/snippets/recaptcha.html", public_key=g.recaptcha_publickey %}
