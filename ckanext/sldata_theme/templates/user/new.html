@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
-{% block subtitle %}{{ _('Register') }}
-{% endblock %} 
+{% block subtitle %}{{ _('Register') }}{% endblock %} 
+
 {% block styles %}
 <link
   rel="stylesheet"
@@ -11,7 +11,9 @@
 />
 <link rel="stylesheet" href="/base/css/slcore.css" />
 <link rel="stylesheet" href="/base/css/mdb.css" />
-{% endblock %} {% block scripts %}
+{% endblock %} 
+
+{% block scripts %}
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
   integrity="sha512-6UofPqm0QupIL0kzS/UIzekR73/luZdC6i/kXDbWnLOJoqwklBK6519iUnShaYceJ0y4FaiPtX/hRnV/X/xlUQ=="
@@ -26,25 +28,27 @@
 ></script>
 <script src="/base/js/mdb.js"></script>
 {% endblock %} 
+
 {% block page %} 
-  {% block maintag %}
-{% endblock %} 
-{% block toolbar %}
-{% endblock %} 
-{% block header %} 
-  {% snippet "header_new.html" %} 
-{%endblock %} 
-{% block content %}
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="my-4">
-        <img src="/base/images/logo.png" height="128" alt="open data portal">
+  {% block maintag %}{% endblock %} 
+
+  {% block toolbar %}{% endblock %} 
+
+  {% block header %} 
+    {% snippet "header_new.html" %} 
+  {%endblock %} 
+  {% block content %}
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="my-4">
+          <img src="/base/images/logo.png" height="128" alt="open data portal">
+        </div>
+        <h1 class="h4 text-center mb-2">
+          {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
+        </h1>
+        <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
+        {{ form | safe }}
       </div>
-      <h1 class="h4 text-center mb-2">
-        {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
-      </h1>
-      <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
-      {{ form | safe }}
     </div>
-  </div>
+  {% endblock %}
 {% endblock %}
