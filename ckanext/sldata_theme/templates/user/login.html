@@ -37,7 +37,7 @@
 {% block content %}
   <div class="container">
     <div class="row justify-content-md-center">
-      <div class="col-6 mb-4">
+      <div class="col-6">
         {% block form %}
           {% snippet "user/snippets/login_form.html", action=g.login_handler, error_summary=error_summary %} 
         {% endblock %}
