@@ -1,33 +1,60 @@
-{% extends "page.html" %}
+{% extends "base.html" %} 
+{% block subtitle %}{{ _('Register') }}{% endblock %} 
 
-{% block subtitle %}{{ _('Register') }}{% endblock %}
+{% block styles %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+  integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link rel="stylesheet" href="/base/css/slcore.css" />
+<link rel="stylesheet" href="/base/css/mdb.css" />
+{% endblock %} 
 
-{% block breadcrumb_content %}
-  <li class="active">{{ h.nav_link(_('Registration'), named_route='user.register') }}</li>
-{% endblock %}
+{% block scripts %}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
+  integrity="sha512-6UofPqm0QupIL0kzS/UIzekR73/luZdC6i/kXDbWnLOJoqwklBK6519iUnShaYceJ0y4FaiPtX/hRnV/X/xlUQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+  integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="/base/js/mdb.js"></script>
+{% endblock %} 
 
-{% block primary_content %}
-  <article class="module">
-    <div class="module-content">
-      {% block primary_content_inner %}
-      <h1 class="page-heading">
-        {% block page_heading %}{{ _('Register for an Account') }}{% endblock %}
-      </h1>
-      {{ form | safe }}
-      {% endblock %}
+{% block page %} 
+  {% block maintag %}{% endblock %} 
+
+  {% block toolbar %}{% endblock %} 
+
+  {% block header %} 
+    {% snippet "header_new.html" %} 
+  {%endblock %} 
+  {% block content %}
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-6 mb-4">
+          <div class="my-4 d-flex justify-content-md-center">
+            <img src="/base/images/logo.png" height="128" alt="open data portal">
+          </div>
+          <h1 class="h4 text-center mb-2">
+            {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
+          </h1>
+          <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
+          {{ form | safe }}
+        </div>
+      </div>
     </div>
-  </article>
-{% endblock %}
-
-{% block secondary_content %}
-  {% block help %}
-  <section class="module module-narrow module-shallow">
-    {% block help_inner %}
-    <h2 class="module-heading">{{ _('Why Sign Up?') }}</h2>
-    <div class="module-content">
-      <p>{% trans %}Create datasets, groups and other exciting things{% endtrans %}</p>
-    </div>
-    {% endblock %}
-  </section>
   {% endblock %}
+
+  {%- block footer %}
+    {% include "footer.html" %}
+  {% endblock -%}
 {% endblock %}
