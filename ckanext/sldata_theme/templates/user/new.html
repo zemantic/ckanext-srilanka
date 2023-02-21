@@ -6,20 +6,15 @@
   <li class="active breadcrumb-item">{{ h.nav_link(_('Registration'), class_="text-white", named_route='user.register') }}</li>
 {% endblock %}
 
-{% block primary_content %}
-  <article class="module">
-    <div class="module-content">
-      {% block primary_content_inner %}
-      <h1 class="h4 text-center mb-4">
-        {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
-      </h1>
-      <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
-      {{ form | safe }}
-      {% endblock %}
+{% block pre_primary %}
+  <div class="col-md-6">
+    <div class="d-flex justify-content-center mt-4">
+      <img src="/base/images/logo.png" height="128" alt="open data portal">
     </div>
-  </article>
-{% endblock %}
-
-{% block secondary_content %}
-
+    <h1 class="h4 text-center mb-2">
+      {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
+    </h1>
+    <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
+    {{ form | safe }}
+  </div>
 {% endblock %}
