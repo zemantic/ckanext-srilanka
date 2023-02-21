@@ -1,18 +1,19 @@
-{% extends "page.html" %}
+{% extends "pagesl.html" %}
 
 {% block subtitle %}{{ _('Register') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{{ h.nav_link(_('Registration'), named_route='user.register') }}</li>
+  <li class="active breadcrumb-item">{{ h.nav_link(_('Registration'), class_="text-white", named_route='user.register') }}</li>
 {% endblock %}
 
 {% block primary_content %}
   <article class="module">
     <div class="module-content">
       {% block primary_content_inner %}
-      <h1 class="page-heading">
-        {% block page_heading %}{{ _('Register for an Account') }}{% endblock %}
+      <h1 class="h4 text-center mb-4">
+        {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
       </h1>
+      <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
       {{ form | safe }}
       {% endblock %}
     </div>
@@ -20,14 +21,5 @@
 {% endblock %}
 
 {% block secondary_content %}
-  {% block help %}
-  <section class="module module-narrow module-shallow">
-    {% block help_inner %}
-    <h2 class="module-heading">{{ _('Why Sign Up?') }}</h2>
-    <div class="module-content">
-      <p>{% trans %}Create datasets, groups and other exciting things{% endtrans %}</p>
-    </div>
-    {% endblock %}
-  </section>
-  {% endblock %}
+
 {% endblock %}
