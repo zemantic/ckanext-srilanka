@@ -40,14 +40,16 @@
   {% block content %}
     <div class="container">
       <div class="row justify-content-md-center">
-        <div class="my-4">
-          <img src="/base/images/logo.png" height="128" alt="open data portal">
+        <div class="col-md-6">
+          <div class="my-4">
+            <img src="/base/images/logo.png" height="128" alt="open data portal">
+          </div>
+          <h1 class="h4 text-center mb-2">
+            {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
+          </h1>
+          <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
+          {{ form | safe }}
         </div>
-        <h1 class="h4 text-center mb-2">
-          {% block page_heading %}{{ _('Open Data Portal of The Ministry of Health Sri Lanka') }}{% endblock %}
-        </h1>
-        <h2 class="class h5 text-center mb-4">Register for an account to submit data and use the Open Data Portal</h2>
-        {{ form | safe }}
       </div>
     </div>
   {% endblock %}
