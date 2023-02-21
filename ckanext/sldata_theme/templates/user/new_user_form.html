@@ -3,7 +3,7 @@
 <form id="user-register-form" action="" method="post" enctype="multipart/form-data">
   {{ form.errors(error_summary) }}
   {{ form.input("name", id="field-username", label=_("Username"), placeholder=_("A unique username"), value=data.name, error=errors.name, classes=["form-outline"], is_required=True) }}
-  {{ form.input("fullname", id="field-fullname", label=_("Full Name"), placeholder=_("Your Name"), value=data.fullname, error=errors.fullname, classes=["form-outline"]) }}
+  {{ form.input("fullname", id="field-fullname", label=_("Full Name"), placeholder=_("Your Name"), value=data.fullname, error=errors.fullname, classes=["form-outline"], is_required=True) }}
   {{ form.input("email", id="field-email", label=_("Email"), type="email", placeholder=_("email@health.gov.lk"), value=data.email, error=errors.email, classes=["form-outline"], is_required=True) }}
   {{ form.input("password1", id="field-password", label=_("Password"), type="password", placeholder="••••••••", value=data.password1, error=errors.password1, classes=["form-outline"], is_required=True) }}
   {{ form.input("password2", id="field-confirm-password", label=_("Confirm"), type="password", placeholder="••••••••", value=data.password2, error=errors.password2, classes=["form-outline"], is_required=True) }}
