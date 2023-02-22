@@ -40,9 +40,9 @@ placeholder = _('e.g. Covid19') %}
     </div>
   </form>
   <div class="tags">
-    <h3>{{ _('Popular tags') }}</h3>
+    <h3 class="text-white">{{ _('Popular tags') }}</h3>
     {% for tag in tags %}
-    <a class="tag" href="{% url_for 'dataset.search', tags=tag.name %}"
+    <a class="tag text-white" href="{% url_for 'dataset.search', tags=tag.name %}"
       >{{ h.truncate(tag.display_name, 22) }}</a
     >
     {% endfor %}

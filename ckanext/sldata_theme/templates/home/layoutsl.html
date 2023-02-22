@@ -1,7 +1,8 @@
 {% set stats = h.get_site_statistics() %}
-<div class="p-5" style="background-color: #0d2e38; height: 360px">
+{% if c.userobj.sysadmin %}
+<div class="home-hero">
   <div class="container">
-    <div class="row">
+    <div class="row p-5">
       <div class="col">
         <h2 class="fw-bold h1 text-white lh-base">
           Open Data Portal Ministry of Health Sri Lanka
@@ -20,3 +21,24 @@
   </div>
 </div>
 {% block stats %} {% snippet 'home/snippets/stats.html' %} {% endblock %}
+{% else %}
+<div class="home-hero">
+  <div class="container">
+    <div class="row p-5">
+      <div class="col">
+        <h1 class="display-1 text-white">Coming Soon</h1>
+        <h2 class="fw-bold h1 text-white lh-base">
+          Open Data Portal Ministry of Health Sri Lanka
+        </h2>
+        <!-- <a class="btn btn-outline-light">Coming Soon</a> -->
+      </div>
+      <div class="col text-end">
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{%- block footer %}
+  {% include "footer.html" %}
+{% endblock -%}

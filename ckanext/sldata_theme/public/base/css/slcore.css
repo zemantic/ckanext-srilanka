@@ -35,4 +35,15 @@ h6 {
   border-bottom: 1px solid #eee;
 }
 
+.home-hero {
+  background-color: #009688;
+  height: 360px;
+}
+.home-hero .container {
+  height: 100%;
+  background-image: linear-gradient(transparent, transparent), url(/base/images/lk-03.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
 /*# sourceMappingURL=slcore.css.map */

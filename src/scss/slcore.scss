@@ -38,3 +38,14 @@ h6 {
 .dataset-item {
   border-bottom: 1px solid #eee;
 }
+
+.home-hero {
+  background-color: $colorPrimary;
+  height: 360px;
+  .container {
+    height: 100%;
+    background-image: linear-gradient(transparent,transparent),url(/base/images/lk-03.svg);
+    background-position: right;
+    background-repeat: no-repeat;  
+  }
+}
