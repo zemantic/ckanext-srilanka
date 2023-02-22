@@ -1,74 +1,75 @@
 {% set stats = h.get_site_statistics() %}
 {% block stats_group %}
-<div class="row">
-  <div class="col-md-6 py-4" style="background: #e2eafc">
-    <h2 class="h4 text-center">
-      General Statistics
-    </h2>
-    <div class="row">
-      <div class="col">
-        <h3 class="text-center display-6">
-          {{ h.SI_number_span(stats.dataset_count) }}
-        </h3>
-        <a
-          class="text-decoration-none fw-bold text-reset"
-          href="{{ h.url_for('dataset.search') }}"
-        >
-          <p class="text-center text-decoration-none">
-            {{ _('Dataset') if stats.dataset_count == 1 else _('Datasets') }}
-          </p>
-        </a>
-      </div>
-      {#
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 py-4" style="background: #e2eafc">
+      <h2 class="h4 text-center">
+        General Statistics
+      </h2>
+      <div class="row">
         <div class="col">
           <h3 class="text-center display-6">
-            {{ h.SI_number_span(stats.organization_count) }}
+            {{ h.SI_number_span(stats.dataset_count) }}
           </h3>
           <a
             class="text-decoration-none fw-bold text-reset"
-            href="{{ h.url_for(controller='organization', action='index') }}"
+            href="{{ h.url_for('dataset.search') }}"
           >
             <p class="text-center text-decoration-none">
-              {{ _('Organization') if stats.organization_count == 1 else
-              _('Organizations') }}
+              {{ _('Dataset') if stats.dataset_count == 1 else _('Datasets') }}
             </p>
           </a>
-        </div>    
-      #}
-      <div class="col">
-        <h3 class="text-center display-6">
-          {{ h.SI_number_span(stats.group_count) }}
-        </h3>
-        <a
-          class="text-decoration-none fw-bold text-reset"
-          href="{{ h.url_for(controller='stats', action='index') }}"
-        >
-          <p class="text-center">
-            {{ _('Group') if stats.group_count == 1 else _('Groups') }}
-          </p>
-        </a>
+        </div>
+        {#
+          <div class="col">
+            <h3 class="text-center display-6">
+              {{ h.SI_number_span(stats.organization_count) }}
+            </h3>
+            <a
+              class="text-decoration-none fw-bold text-reset"
+              href="{{ h.url_for(controller='organization', action='index') }}"
+            >
+              <p class="text-center text-decoration-none">
+                {{ _('Organization') if stats.organization_count == 1 else
+                _('Organizations') }}
+              </p>
+            </a>
+          </div>    
+        #}
+        <div class="col">
+          <h3 class="text-center display-6">
+            {{ h.SI_number_span(stats.group_count) }}
+          </h3>
+          <a
+            class="text-decoration-none fw-bold text-reset"
+            href="{{ h.url_for(controller='stats', action='index') }}"
+          >
+            <p class="text-center">
+              {{ _('Group') if stats.group_count == 1 else _('Groups') }}
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 py-4" style="background: #eaf4f4;">
+      <h2 class="h4 text-center">
+        Independent Datasets
+      </h2>
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center display-6">0</h2>
+          <a class="text-decoration-none fw-bold text-reset" href="">
+            <p class="text-center">Datasets</p>
+          </a>
+        </div>
+        <div class="col">
+          <h2 class="text-center display-6">0</h2>
+          <a class="text-decoration-none fw-bold text-reset" href="">
+            <p class="text-center">Users</p>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-md-6 py-4" style="background: #eaf4f4;">
-    <h2 class="h4 text-center">
-      Independent Datasets
-    </h2>
-    <div class="row">
-      <div class="col">
-        <h2 class="text-center display-6">0</h2>
-        <a class="text-decoration-none fw-bold text-reset" href="">
-          <p class="text-center">Datasets</p>
-        </a>
-      </div>
-      <div class="col">
-        <h2 class="text-center display-6">0</h2>
-        <a class="text-decoration-none fw-bold text-reset" href="">
-          <p class="text-center">Users</p>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+</div>  
 {% endblock %}
-
