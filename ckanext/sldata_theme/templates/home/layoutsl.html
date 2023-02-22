@@ -1,4 +1,5 @@
-{% set stats = h.get_site_statistics() %} {% if c.userobj.sysadmin %}
+{% set stats = h.get_site_statistics() %}
+{% if c.userobj.sysadmin %}
 <div class="home-hero">
   <div class="container">
     <div class="row p-5">
@@ -19,8 +20,8 @@
     </div>
   </div>
 </div>
-{% block stats %} {% snippet 'home/snippets/stats.html' %} {% endblock %} {%
-else %}
+{% block stats %} {% snippet 'home/snippets/stats.html' %} {% endblock %}
+{% else %}
 <div class="home-hero">
   <div class="container">
     <div class="row p-5">
@@ -30,8 +31,13 @@ else %}
         </h2>
         <a class="btn btn-outline-light">Coming Soon</a>
       </div>
-      <div class="col text-end"></div>
+      <div class="col text-end">
+      </div>
     </div>
   </div>
 </div>
-{% endif % } {%- block footer %} {% include "footer.html" %} {% endblock -%}
+{% endif %}
+
+{%- block footer %}
+  {% include "footer.html" %}
+{% endblock -%}
