@@ -38,7 +38,7 @@
       <div class="col">
         <p class="fs-5 fw-semi-bold">Categories</p>
         <div class="grid gap-3">
-          {% for groups in pkg_dict.groups %}
+          {% for group in pkg_dict.groups %}
             <div class="g-col-4">
               <a href="/group/{{ group.id }}" class="btn btn-secondary btn-rounded">{{ group.display_name }}</a>
             </div>
