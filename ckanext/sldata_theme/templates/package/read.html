@@ -18,31 +18,33 @@
 
 {% block pre_primary %}
   <div class="container my-3">
-    <div class="row">
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Last Updated</p>
-        <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Terms of Use</p>
-        {% block package_license %}
-          {% snippet "snippets/license.html", pkg_dict=pkg %}
-        {% endblock %}
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Organization</p>
-        <p class="text-muted">
-          <a href="{{ org_url }}">{{ pkg_dict.organization.title }}</a>
-        </p>
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Categories</p>
-        <div class="grid gap-3">
-          {% for group in pkg_dict.groups %}
-            <div class="g-col-4">
-              <a href="/group/{{ group.id }}" class="btn btn-secondary btn-rounded">{{ group.display_name }}</a>
-            </div>
-          {% endfor %} 
+    <div class="row jusify-content-center">
+      <div class="col-md-11">
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Last Updated</p>
+          <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
+        </div>
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Terms of Use</p>
+          {% block package_license %}
+            {% snippet "snippets/license.html", pkg_dict=pkg %}
+          {% endblock %}
+        </div>
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Organization</p>
+          <p class="text-muted">
+            <a href="{{ org_url }}">{{ pkg_dict.organization.title }}</a>
+          </p>
+        </div>
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Categories</p>
+          <div class="grid gap-3">
+            {% for group in pkg_dict.groups %}
+              <div class="g-col-4">
+                <a href="/group/{{ group.id }}" class="btn btn-secondary btn-sm btn-rounded">{{ group.display_name }}</a>
+              </div>
+            {% endfor %} 
+          </div>
         </div>
       </div>
     </div>
