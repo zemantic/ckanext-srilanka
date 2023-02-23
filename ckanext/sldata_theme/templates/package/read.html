@@ -102,7 +102,9 @@
     {% endblock %}
 
     {% block package_additional_info %}
-      {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
+      <div class="col-md-11">
+        {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
+      </div>
     {% endblock %}
 
     {% block package_info %}
