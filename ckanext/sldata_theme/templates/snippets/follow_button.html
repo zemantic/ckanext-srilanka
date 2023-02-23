@@ -1,5 +1,5 @@
 {% if following %}
-  <a href="{{ h.url_for(obj_type + '.unfollow', id=obj_id) }}" class="btn btn-light"  data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="unfollow">
+  <a href="{{ h.url_for(obj_type + '.unfollow', id=obj_id) }}" class="btn btn-outline-light"  data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="unfollow">
     <i class="fa fa-times-circle"></i>
     {{ _('Unfollow') }}
   </a>
