@@ -17,10 +17,10 @@
   </h1>
 {% endblock %}
 
-<div class="col-md-11">
-  {% block pre_primary %}
-    <div class="container my-3">
-      <div class="row jusify-content-center">
+{% block pre_primary %}
+  <div class="row my-3 justify-content-center">
+    <div class="col-md-11">
+      <div class="row">
         <div class="col">
           <p class="fs-5 fw-semi-bold">Last Updated</p>
           <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
@@ -49,41 +49,43 @@
         </div>
       </div>
     </div>
-  {% endblock %}
-  
-  {% block fluid_content %}
-    {{ super() }}
-    {% block package_description %}
-      {% if pkg.private %}
-      <div>
-        <span class="badge badge-danger">
-          <i class="fa fa-lock"></i>
-          {{ _('Private') }}
-        </span>
-      </div>
+  </div>
+{% endblock %}
+
+{% block fluid_content %}
+  {{ super() }}
+  {% block package_description %}
+    {% if pkg.private %}
+    <div>
+      <span class="badge badge-danger">
+        <i class="fa fa-lock"></i>
+        {{ _('Private') }}
+      </span>
+    </div>
+    {% endif %}
+    {% block package_archive_notice %}
+      {% if is_activity_archive %}
+        <div class="alert alert-danger">
+          {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %}
+          You're currently viewing an old version of this dataset. To see the
+          current version, click <a href="{{ url }}">here</a>.
+          {% endtrans %}
+        </div>
       {% endif %}
-      {% block package_archive_notice %}
-        {% if is_activity_archive %}
-          <div class="alert alert-danger">
-            {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %}
-            You're currently viewing an old version of this dataset. To see the
-            current version, click <a href="{{ url }}">here</a>.
-            {% endtrans %}
-          </div>
-        {% endif %}
-      {% endblock %}
-  
+    {% endblock %}
+    
+    <div class="row justify-content-center">
       {% block package_notes %}
         {% if pkg.notes %}
-          <div class="notes my-4 embedded-content">
-            <h2 class="h2">Description</h2>
-            <div class="my-3 lead">
-              {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+            <div class="notes col-md-11 my-4 embedded-content">
+              <h2 class="h2">Description</h2>
+              <div class="my-3 lead">
+                {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+              </div>
             </div>
-          </div>
         {% endif %}
       {% endblock %}
-  
+
       {% block package_tags %}
         <div class="my-2">
           {% snippet "package/snippets/tags.html", tags=pkg.tags %}
@@ -92,24 +94,23 @@
       {# FIXME why is this here? seems wrong #}
       <span class="insert-comment-thread"></span>
     {% endblock %}
-  
+
     {% block package_resources %}
       {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
     {% endblock %}
-  
+
     {% block package_additional_info %}
       {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
     {% endblock %}
-  
+
     {% block package_info %}
       {% snippet 'package/snippets/info.html', pkg=pkg %}
     {% endblock %}
-  
+
     {% block package_organization %}
     {% endblock %}
-  
+
     {% block package_social %}
     {% endblock %}
-  
-  {% endblock %}
-</div>
+  </div>
+{% endblock %}
