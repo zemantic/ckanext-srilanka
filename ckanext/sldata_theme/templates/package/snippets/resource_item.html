@@ -31,12 +31,14 @@
   {% endblock %}
   {% block resource_item_explore %}
 </dt>
+
 <dd class="col-4">
   <div class="d-flex">
     <p class="fs-6">
       <span class="badge badge-primary" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">{{ h.get_translated(res, 'format') }}</span>
     </p>
     {% if not url_is_edit %}
+
       {% block resource_item_explore_links %}
         <a class="btn btn-sm btn-success" href="{{ url }}">
           {% if not is_activity_archive and res.has_views %}
@@ -66,6 +68,7 @@
             {{ _('Edit') }}
           </a>
         {% endif %}
+        {% endblock %}
       {% endblock %}
     {% endif %}
   </div>
