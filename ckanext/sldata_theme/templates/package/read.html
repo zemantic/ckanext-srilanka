@@ -2,6 +2,7 @@
 
 {% set org_url = h.url_for(pkg_dict.organization.type + '.read', id=pkg_dict.organization.name, ) %}
 
+
 {% block title_text %} 
   <h1 class="text-white">
     {% block page_heading %}
@@ -16,10 +17,10 @@
   </h1>
 {% endblock %}
 
-{% block pre_primary %}
-  <div class="container my-3">
-    <div class="row jusify-content-center">
-      <div class="col-md-11">
+<div class="col-md-11">
+  {% block pre_primary %}
+    <div class="container my-3">
+      <div class="row jusify-content-center">
         <div class="col">
           <p class="fs-5 fw-semi-bold">Last Updated</p>
           <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
@@ -41,74 +42,74 @@
           <div class="grid gap-3">
             {% for group in pkg_dict.groups %}
               <div class="g-col-4">
-                <a href="/group/{{ group.id }}" class="btn btn-secondary btn-sm btn-rounded">{{ group.display_name }}</a>
+                <a href="/group/{{ group.id }}" class="btn btn-secondary btn-rounded">{{ group.display_name }}</a>
               </div>
             {% endfor %} 
           </div>
         </div>
       </div>
     </div>
-  </div>
-{% endblock %}
-
-{% block fluid_content %}
-  {{ super() }}
-  {% block package_description %}
-    {% if pkg.private %}
-    <div>
-      <span class="badge badge-danger">
-        <i class="fa fa-lock"></i>
-        {{ _('Private') }}
-      </span>
-    </div>
-    {% endif %}
-    {% block package_archive_notice %}
-      {% if is_activity_archive %}
-        <div class="alert alert-danger">
-          {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %}
-          You're currently viewing an old version of this dataset. To see the
-          current version, click <a href="{{ url }}">here</a>.
-          {% endtrans %}
-        </div>
-      {% endif %}
-    {% endblock %}
-
-    {% block package_notes %}
-      {% if pkg.notes %}
-        <div class="notes my-4 embedded-content">
-          <h2 class="h2">Description</h2>
-          <div class="my-3 lead">
-            {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
-          </div>
-        </div>
-      {% endif %}
-    {% endblock %}
-
-    {% block package_tags %}
-      <div class="my-2">
-        {% snippet "package/snippets/tags.html", tags=pkg.tags %}
+  {% endblock %}
+  
+  {% block fluid_content %}
+    {{ super() }}
+    {% block package_description %}
+      {% if pkg.private %}
+      <div>
+        <span class="badge badge-danger">
+          <i class="fa fa-lock"></i>
+          {{ _('Private') }}
+        </span>
       </div>
+      {% endif %}
+      {% block package_archive_notice %}
+        {% if is_activity_archive %}
+          <div class="alert alert-danger">
+            {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %}
+            You're currently viewing an old version of this dataset. To see the
+            current version, click <a href="{{ url }}">here</a>.
+            {% endtrans %}
+          </div>
+        {% endif %}
+      {% endblock %}
+  
+      {% block package_notes %}
+        {% if pkg.notes %}
+          <div class="notes my-4 embedded-content">
+            <h2 class="h2">Description</h2>
+            <div class="my-3 lead">
+              {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+            </div>
+          </div>
+        {% endif %}
+      {% endblock %}
+  
+      {% block package_tags %}
+        <div class="my-2">
+          {% snippet "package/snippets/tags.html", tags=pkg.tags %}
+        </div>
+      {% endblock %}
+      {# FIXME why is this here? seems wrong #}
+      <span class="insert-comment-thread"></span>
     {% endblock %}
-    {# FIXME why is this here? seems wrong #}
-    <span class="insert-comment-thread"></span>
+  
+    {% block package_resources %}
+      {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
+    {% endblock %}
+  
+    {% block package_additional_info %}
+      {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
+    {% endblock %}
+  
+    {% block package_info %}
+      {% snippet 'package/snippets/info.html', pkg=pkg %}
+    {% endblock %}
+  
+    {% block package_organization %}
+    {% endblock %}
+  
+    {% block package_social %}
+    {% endblock %}
+  
   {% endblock %}
-
-  {% block package_resources %}
-    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
-  {% endblock %}
-
-  {% block package_additional_info %}
-    {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
-  {% endblock %}
-
-  {% block package_info %}
-    {% snippet 'package/snippets/info.html', pkg=pkg %}
-  {% endblock %}
-
-  {% block package_organization %}
-  {% endblock %}
-
-  {% block package_social %}
-  {% endblock %}
-
-{% endblock %}
+</div>
