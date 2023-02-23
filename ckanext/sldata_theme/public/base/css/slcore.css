@@ -41,9 +41,14 @@ h6 {
 }
 .home-hero .container {
   height: 100%;
-  background-image: linear-gradient(transparent, transparent), url(/base/images/lk-03.svg);
+  background-image: linear-gradient(transparent, transparent),
+    url(/base/images/lk-03.svg);
   background-position: right;
   background-repeat: no-repeat;
+}
+
+.fw-semi-bold {
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=slcore.css.map */

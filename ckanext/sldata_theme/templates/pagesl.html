@@ -52,17 +52,28 @@
           {% block toolbar %}
             <div class="page-header mb-4 text-white">
               <div class="container">
-                <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
-                  {% block breadcrumb %}
-                    {% if self.breadcrumb_content() | trim %}
-                      <ol class="breadcrumb">
-                        {% snippet 'snippets/home_breadcrumb_item.html' %}
-                        {% block breadcrumb_content %}{% endblock %}
-                      </ol>
-                    {% endif %}
-                  {% endblock %}
+                <div class="row justify-content-center">
+                  <div class="col-md-11">
+                    <div class="row">
+                      <div class="col-md-10">
+                        <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
+                          {% block breadcrumb %}
+                            {% if self.breadcrumb_content() | trim %}
+                              <ol class="breadcrumb">
+                                {% snippet 'snippets/home_breadcrumb_item.html' %}
+                                {% block breadcrumb_content %}{% endblock %}
+                              </ol>
+                            {% endif %}
+                          {% endblock %}
+                        </div>
+                        {% block title_text %}{% endblock %}
+                      </div>
+                      <div class="col-md-2 d-flex align-items-center">
+                        {% block follow_button %} {% endblock %}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                {% block title_text %}{% endblock %}
               </div>
             </div>
           {% endblock %}
@@ -74,6 +85,11 @@
             #}
             {% block pre_primary %}
             {% endblock %}
+
+            {# for fluid content that does not require the sidebar#}
+            {% block fluid_content %}
+            {% endblock %}
+
             {% block secondary %}
               <aside class="secondary col-sm-3">
                 {#
