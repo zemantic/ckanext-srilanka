@@ -14,7 +14,7 @@ Example:
   <h2>{{ _('Data and Resources') }}</h2>
   {% block resource_list %}
     {% if resources %}
-      <dl class="{% block resource_list_class %}resource-list{% endblock %} row">
+      <dl class="{% block resource_list_class %}resource-list{% endblock %}">
         {% block resource_list_inner %}
           {% set can_edit = h.check_access('package_update', {'id':pkg.id }) and not is_activity_archive %}
           {% for resource in resources %}
