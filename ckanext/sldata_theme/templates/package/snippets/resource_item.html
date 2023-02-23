@@ -31,27 +31,27 @@
   {% endblock %}
   {% block resource_item_explore %}
 </dt>
-
 <dd class="col-4">
   <div class="d-flex">
     <p class="fs-6">
       <span class="badge badge-primary" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">{{ h.get_translated(res, 'format') }}</span>
     </p>
     {% if not url_is_edit %}
-
-      {% block resource_item_explore_links %}
-        <a class="btn btn-sm btn-success" href="{{ url }}">
-          {% if not is_activity_archive and res.has_views %}
-            <i class="fa fa-bar-chart-o"></i>
-            {{ _('Preview') }}
-          {% else %}
-            <i class="fa fa-info-circle"></i>
-            {{ _('More information') }}
-          {% endif %}
-        </a>
-
+        {% block resource_item_explore_links %}
+        
+          <a class="btn btn-sm btn-success" href="{{ url }}">
+            {% if not is_activity_archive and res.has_views %}
+              <i class="fa fa-bar-chart-o"></i>
+              {{ _('Preview') }}
+            {% else %}
+              <i class="fa fa-info-circle"></i>
+              {{ _('More information') }}
+            {% endif %}
+          </a>
+        
         {% if res.url and h.is_url(res.url) %}
-          <a href="{{ res.url }}" class="resource-url-analytics btn btn-sm btn-success" target="_blank">
+        
+          <a class="btn btn-sm btn-success" href="{{ res.url }}" class="resource-url-analytics" target="_blank">
             {% if res.has_views or res.url_type == 'upload' %}
               <i class="fa fa-arrow-circle-o-down"></i>
               {{ _('Download') }}
@@ -60,16 +60,21 @@
               {{ _('Go to resource') }}
             {% endif %}
           </a>
-        {% endif %}
         
+        {% endif %}
+
         {% if can_edit %}
+        
           <a class="btn btn-sm btn-success" href="{{ h.url_for(pkg.type ~ '_resource.edit', id=pkg.name, resource_id=res.id) }}">
             <i class="fa fa-pencil-square-o"></i>
             {{ _('Edit') }}
           </a>
+        
         {% endif %}
         {% endblock %}
-      {% endblock %}
+      
+    
     {% endif %}
+    {% endblock %}
   </div>
 </dd>
