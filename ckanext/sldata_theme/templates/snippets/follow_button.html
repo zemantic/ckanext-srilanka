@@ -4,7 +4,7 @@
     {{ _('Unfollow') }}
   </a>
 {% else %}
-  <a href="{{ h.url_for(obj_type + '.follow', id=obj_id) }}" class="btn btn-outline btn-light"  data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="follow">
+  <a href="{{ h.url_for(obj_type + '.follow', id=obj_id) }}" class="btn btn-outline-light"  data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="follow">
     <i class="fa fa-plus-circle"></i>
     {{ _('Follow') }}
   </a>
