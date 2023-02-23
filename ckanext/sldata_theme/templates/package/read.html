@@ -17,6 +17,14 @@
   </h1>
 {% endblock %}
 
+{% block follow_button %}
+  {% if not hide_follow_button %}
+    <div class="follow_button">
+      {{ h.follow_button('dataset', pkg.id, class_="btn btn-outline btn-light") }}
+    </div>
+  {% endif %}
+{% endblock %}
+
 {% block pre_primary %}
   <div class="row my-3 justify-content-center">
     <div class="col-md-11">

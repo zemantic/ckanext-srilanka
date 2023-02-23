@@ -54,17 +54,24 @@
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-md-11">
-                    <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
-                      {% block breadcrumb %}
-                        {% if self.breadcrumb_content() | trim %}
-                          <ol class="breadcrumb">
-                            {% snippet 'snippets/home_breadcrumb_item.html' %}
-                            {% block breadcrumb_content %}{% endblock %}
-                          </ol>
-                        {% endif %}
-                      {% endblock %}
+                    <div class="row">
+                      <div class="col-md-10">
+                        <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
+                          {% block breadcrumb %}
+                            {% if self.breadcrumb_content() | trim %}
+                              <ol class="breadcrumb">
+                                {% snippet 'snippets/home_breadcrumb_item.html' %}
+                                {% block breadcrumb_content %}{% endblock %}
+                              </ol>
+                            {% endif %}
+                          {% endblock %}
+                        </div>
+                        {% block title_text %}{% endblock %}
+                      </div>
+                      <div class="col-md-2">
+                        {% block follow_button %} {% endblock %}
+                      </div>
                     </div>
-                    {% block title_text %}{% endblock %}
                   </div>
                 </div>
               </div>
