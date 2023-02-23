@@ -1,103 +1,144 @@
-{% extends "package/read_base_sl.html" %} {% set org_url =
-h.url_for(pkg_dict.organization.type + '.read', id=pkg_dict.organization.name, )
-%} {% block title_text %}
-<h1 class="text-white">
-  {% block page_heading %} {{ h.dataset_display_name(pkg) }} {% if
-  pkg.state.startswith('draft') %} [{{ _('Draft') }}] {% endif %} {% if
-  pkg.state == 'deleted' %} [{{ _('Deleted') }}] {% endif %} {% endblock %}
-</h1>
-{% endblock %} {% block follow_button %} {% if not hide_follow_button %}
-<div class="follow_button">{{ h.follow_button('dataset', pkg.id) }}</div>
-{% endif %} {% endblock %} {% block pre_primary %}
-<div class="row my-3 justify-content-center">
-  <div class="col-md-11">
-    <div class="row">
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Last Updated</p>
-        <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Terms of Use</p>
-        {% block package_license %} {% snippet "snippets/license.html",
-        pkg_dict=pkg %} {% endblock %}
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Organization</p>
-        <p class="text-muted">
-          <a href="{{ org_url }}">{{ pkg_dict.organization.title }}</a>
-        </p>
-      </div>
-      <div class="col">
-        <p class="fs-5 fw-semi-bold">Categories</p>
-        <div class="grid gap-3">
-          {% for group in pkg_dict.groups %}
-          <div class="g-col-4">
-            <a
-              href="/group/{{ group.id }}"
-              class="btn btn-secondary btn-sm btn-rounded"
-              >{{ group.display_name }}</a
-            >
+{% extends "package/read_base_sl.html" %}
+
+{% set org_url = h.url_for(pkg_dict.organization.type + '.read', id=pkg_dict.organization.name, ) %}
+
+
+{% block title_text %} 
+  <h1 class="text-white">
+    {% block page_heading %}
+      {{ h.dataset_display_name(pkg) }}
+      {% if pkg.state.startswith('draft') %}
+        [{{ _('Draft') }}]
+      {% endif %}
+      {% if pkg.state == 'deleted' %}
+        [{{ _('Deleted') }}]
+      {% endif %}
+    {% endblock %}
+  </h1>
+{% endblock %}
+
+{% block follow_button %}
+  {% if not hide_follow_button %}
+    <div class="follow_button">
+      {{ h.follow_button('dataset', pkg.id) }}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block pre_primary %}
+  <div class="row my-3 justify-content-center">
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Last Updated</p>
+          <p class="text-muted">{{ pkg_dict.metadata_modified }}</p>
+        </div>
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Terms of Use</p>
+          {% block package_license %}
+            {% snippet "snippets/license.html", pkg_dict=pkg %}
+          {% endblock %}
+        </div>
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Organization</p>
+          <p class="text-muted">
+            <a href="{{ org_url }}">{{ pkg_dict.organization.title }}</a>
+          </p>
+        </div>
+        <div class="col">
+          <p class="fs-5 fw-semi-bold">Categories</p>
+          <div class="grid gap-3">
+            {% for group in pkg_dict.groups %}
+              <div class="g-col-4">
+                <a href="/group/{{ group.id }}" class="btn btn-secondary btn-sm btn-rounded">{{ group.display_name }}</a>
+              </div>
+            {% endfor %} 
           </div>
-          {% endfor %}
         </div>
       </div>
     </div>
   </div>
-</div>
-{% endblock %} {% block fluid_content %} {{ super() }} {% block
-package_description %} {% if pkg.private %}
-<div>
-  <span class="badge badge-danger">
-    <i class="fa fa-lock"></i>
-    {{ _('Private') }}
-  </span>
-</div>
-{% endif %} {% block package_archive_notice %} {% if is_activity_archive %}
-<div class="alert alert-danger">
-  {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %} You're currently
-  viewing an old version of this dataset. To see the current version, click
-  <a href="{{ url }}">here</a>. {% endtrans %}
-</div>
-{% endif %} {% endblock %}
+{% endblock %}
 
-<div class="row justify-content-center">
-  {% block package_notes %} {% if pkg.notes %}
-  <div class="notes col-md-11 my-3 embedded-content">
-    <h2 class="h2">Description</h2>
-    <div class="my-3 lead">
-      {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+{% block fluid_content %}
+  {{ super() }}
+  {% block package_description %}
+    {% if pkg.private %}
+    <div>
+      <span class="badge badge-danger">
+        <i class="fa fa-lock"></i>
+        {{ _('Private') }}
+      </span>
     </div>
-  </div>
-  {% endif %} {% endblock %} {% block package_tags %}
-  <div class="my-2 col-md-11">
-    {% snippet "package/snippets/tags.html", tags=pkg.tags %}
-  </div>
-  {% endblock %} {# FIXME why is this here? seems wrong #}
-  <span class="insert-comment-thread"></span>
-  {% endblock %} {% block package_resources %}
-  <div class="col-md-11 my-3">
-    {% snippet "package/snippets/resources_list.html", pkg=pkg,
-    resources=pkg.resources, is_activity_archive=is_activity_archive %}
-  </div>
-  {% endblock %} {% block package_additional_info %}
-  <div class="col-md-11 my-3">
-    {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
-  </div>
-  {% endblock %} {% block package_info %}
-  <div class="col-md-11 my-3">
-    {% snippet 'package/snippets/info.html', pkg=pkg %}
-  </div>
-  {% endblock %} {% block package_organization %} {% endblock %} {% block
-  package_social %} {% endblock %}
+    {% endif %}
+    {% block package_archive_notice %}
+      {% if is_activity_archive %}
+        <div class="alert alert-danger">
+          {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %}
+          You're currently viewing an old version of this dataset. To see the
+          current version, click <a href="{{ url }}">here</a>.
+          {% endtrans %}
+        </div>
+      {% endif %}
+    {% endblock %}
+    
+    <div class="row justify-content-center">
+      {% block package_notes %}
+        {% if pkg.notes %}
+            <div class="notes col-md-11 my-3 embedded-content">
+              <h2 class="h2">Description</h2>
+              <div class="my-3 lead">
+                {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+              </div>
+            </div>
+        {% endif %}
+      {% endblock %}
 
-  <div class="col-md-11 my-3">
-    <h5>Additional Actions</h5>
-    {{ h.build_nav_icon(dataset_type ~ '.read', _('Dataset'), id=pkg.id if
-    is_activity_archive else pkg.name, icon='sitemap') }} {{
-    h.build_nav_icon(dataset_type ~ '.groups', _('Groups'), id=pkg.id if
-    is_activity_archive else pkg.name, icon='users') }} {{
-    h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id
-    if is_activity_archive else pkg.name, icon='clock-o') }}
+      {% block package_tags %}
+        <div class="my-2 col-md-11">
+          {% snippet "package/snippets/tags.html", tags=pkg.tags %}
+        </div>
+      {% endblock %}
+      {# FIXME why is this here? seems wrong #}
+      <span class="insert-comment-thread"></span>
+    {% endblock %}
+
+    {% block package_resources %}
+      <div class="col-md-11 my-3">
+        {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
+      </div>
+    {% endblock %}
+
+    {% block package_additional_info %}
+      <div class="col-md-11 my-3">
+        {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
+      </div>
+    {% endblock %}
+
+    {# {% block package_info %}
+      <div class="col-md-11 my-3">
+        {% snippet 'package/snippets/info.html', pkg=pkg %}
+      </div>
+    {% endblock %}
+    #}
+
+    {% block package_organization %}
+    {% endblock %}
+
+    {% block package_social %}
+    {% endblock %}
+    
+    {% if not is_activity_archive %}
+      {% if h.check_access('package_update', {'id':pkg.id }) %}
+      <div class="col-md-11 my-3">
+        {% link_for _('Manage'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-secondary', icon='wrench' %}
+      </div>
+      {% endif %}
+    {% endif %}
+      {#<h5>Additional Actions</h5>
+      {{ h.build_nav_icon(dataset_type ~ '.read', _('Dataset'), id=pkg.id if is_activity_archive else pkg.name, icon='sitemap') }}
+      {{ h.build_nav_icon(dataset_type ~ '.groups', _('Groups'), id=pkg.id if is_activity_archive else pkg.name, icon='users') }} 
+      {{ h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id if is_activity_archive else pkg.name, icon='clock-o') }}
+      #}
   </div>
-</div>
 {% endblock %}
