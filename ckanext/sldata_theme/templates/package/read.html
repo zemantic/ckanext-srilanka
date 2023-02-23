@@ -20,7 +20,7 @@
 {% block follow_button %}
   {% if not hide_follow_button %}
     <div class="follow_button">
-      {{ h.follow_button('dataset', pkg.id, class_="btn btn-outline btn-light") }}
+      {{ h.follow_button('dataset', pkg.id) }}
     </div>
   {% endif %}
 {% endblock %}
