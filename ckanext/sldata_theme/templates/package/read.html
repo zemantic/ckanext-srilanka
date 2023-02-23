@@ -87,7 +87,7 @@
       {% endblock %}
 
       {% block package_tags %}
-        <div class="my-2">
+        <div class="my-2 col-md-11">
           {% snippet "package/snippets/tags.html", tags=pkg.tags %}
         </div>
       {% endblock %}
@@ -96,7 +96,9 @@
     {% endblock %}
 
     {% block package_resources %}
-      {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
+      <div class="col-md-11">
+        {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
+      </div>
     {% endblock %}
 
     {% block package_additional_info %}
@@ -104,7 +106,9 @@
     {% endblock %}
 
     {% block package_info %}
-      {% snippet 'package/snippets/info.html', pkg=pkg %}
+      <div class="col-md-11">
+        {% snippet 'package/snippets/info.html', pkg=pkg %}
+      </div>
     {% endblock %}
 
     {% block package_organization %}
