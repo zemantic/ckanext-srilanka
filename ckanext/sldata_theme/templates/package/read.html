@@ -77,7 +77,7 @@
     <div class="row justify-content-center">
       {% block package_notes %}
         {% if pkg.notes %}
-            <div class="notes col-md-11 my-4 embedded-content">
+            <div class="notes col-md-11 my-3 embedded-content">
               <h2 class="h2">Description</h2>
               <div class="my-3 lead">
                 {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
@@ -96,19 +96,19 @@
     {% endblock %}
 
     {% block package_resources %}
-      <div class="col-md-11">
+      <div class="col-md-11 my-3">
         {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
       </div>
     {% endblock %}
 
     {% block package_additional_info %}
-      <div class="col-md-11">
+      <div class="col-md-11 my-3">
         {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
       </div>
     {% endblock %}
 
     {% block package_info %}
-      <div class="col-md-11">
+      <div class="col-md-11 my-3">
         {% snippet 'package/snippets/info.html', pkg=pkg %}
       </div>
     {% endblock %}
