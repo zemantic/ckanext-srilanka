@@ -53,5 +53,8 @@ h6 {
 .ckan-link-success {
   color: #009688;
 }
+.ckan-link-success :hover {
+  color: #00635a;
+}
 
 /*# sourceMappingURL=slcore.css.map */
