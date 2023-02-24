@@ -1,0 +1,23 @@
+<div x-data="categoriesApp()">
+  <div class="container">
+    <div class="row justiry-content-center">
+      <template x-for="category in categories">
+        <li>{{category.title}}</li>
+      </template>
+    </div>
+  </div>
+</div>
+
+<script>
+  const categoriesApp = () => {
+    return {
+      categories: async () => {
+        const fetch = await fetch("/zemantic/api/home/categories");
+        if (fetch.status !== 200) return;
+        const data = await fetch.json();
+        const categories = data.data.categories;
+        return categories
+      },
+    };
+  };
+</script>
