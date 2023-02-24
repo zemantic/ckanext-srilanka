@@ -133,6 +133,8 @@
       {% if h.check_access('package_update', {'id':pkg.id }) %}
       <div class="col-md-11 my-3">
         {% link_for _('Manage'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-secondary', icon='wrench' %}
+        <a href="/dataset/groups/{{pkg.id}}" class="btn btn-secondary">Manage Categories</a>
+        {% link_for dataset_type ~ '.groups', _('Manage Categories'), id=pkg.id if is_activity_archive else pkg.name, icon='wrench' %}
       </div>
       {% endif %}
     {% endif %}
@@ -140,8 +142,5 @@
       {{ h.build_nav_icon(dataset_type ~ '.read', _('Dataset'), id=pkg.id if is_activity_archive else pkg.name, icon='sitemap') }}
       {{ h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id if is_activity_archive else pkg.name, icon='clock-o') }}
       #}
-      {% if c.userobj.sysadmin %}
-        {{ h.build_nav_icon(dataset_type ~ '.groups', _('Groups'), id=pkg.id if is_activity_archive else pkg.name, icon='users') }} 
-      {% endif %}
   </div>
 {% endblock %}
