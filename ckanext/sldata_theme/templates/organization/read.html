@@ -1,11 +1,5 @@
 {% extends "organization/read_base_sl.html" %}
 
-{% block page_primary_action %}
-  {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
-    {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
-  {% endif %}
-{% endblock %}
-
 {% block primary_content_inner %}
     {% block groups_search_form %}
       {% set facets = {
