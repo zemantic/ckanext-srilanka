@@ -2,7 +2,7 @@
 {% block page_header %}{% endblock %}
 
 {% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Organizations') }}{% endblock %}
-
+{%block header_class %}{% endblock %}
 {% block title_text %} 
   <h1 class="text-white">
     {{ group_dict.display_name }} 
@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block fluid_content %}
-  <div class="my-3 col-md-11 lead">
+  <div class="my-3 lead">
     {% if group_dict.description %}
       <p class="description">
         {{ h.markdown_extract(group_dict.description) }}
@@ -33,11 +33,11 @@
   {{ h.build_nav_icon(group_type + '.about', _('About'), id=group_dict.name, icon='info-circle') }}
 {% endblock %}
 #}
- {% block page_primary_action %}{% endblock %}
+{% block page_primary_action %}{% endblock %}
 {% block secondary_content %}
   {% block content_action %}
     {% if h.check_access('organization_update', {'id': group_dict.id}) %}
-      <div class="my-2">
+      <div class="mb-2">
         {% link_for _('Edit Organization'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-secondary w-100', icon='wrench' %}
       </div>
     {% endif %}
