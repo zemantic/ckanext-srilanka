@@ -10,9 +10,9 @@
 
 <script>
   const fetchCategories = async () => {
-    const fetch = await fetch("/zemantic/api/home/categories");
-    if (fetch.status !== 200) return;
-    const data = await fetch.json();
+    const fetchData = await fetch("/zemantic/api/home/categories");
+    if (fetchData.status !== 200) return;
+    const data = await fetchData.json();
     const categories = data.data.categories;
     return categories
   }
