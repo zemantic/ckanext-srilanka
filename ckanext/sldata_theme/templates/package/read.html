@@ -133,7 +133,7 @@
       {% if h.check_access('package_update', {'id':pkg.id }) %}
         <div class="col-md-11 my-3">
           {% link_for _('Edit Dataset'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-secondary', icon='wrench' %}
-          {% link_for _('Manage Categories'), named_route=pkg.type ~ '.group', id=pkg.name, class_='btn btn-secondary', icon='wrench' %}
+          {% link_for _('Manage Categories'), named_route=pkg.type ~ '.groups', id=pkg.name, class_='btn btn-secondary', icon='wrench' %}
           <a href="/dataset/groups/{{pkg.id}}" class="btn btn-secondary">Manage Categories</a>
         </div>
       {% endif %}
