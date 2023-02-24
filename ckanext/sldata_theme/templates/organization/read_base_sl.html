@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block fluid_content %}
-  <div class="my-3 lead">
+  <div class="my-3 col-md-11 lead">
     {% if group_dict.description %}
       <p class="description">
         {{ h.markdown_extract(group_dict.description) }}
@@ -38,6 +38,13 @@
 {% endblock %}
 
 {% block secondary_content %}
+
+  {% block page_primary_action %}
+    {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
+      {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+    {% endif %}
+  {% endblock %}
+
   {% snippet 'snippets/organization.html', organization=group_dict, show_nums=true, group_type=group_type %}
   {% block organization_facets %}{% endblock %}
 {% endblock %}
