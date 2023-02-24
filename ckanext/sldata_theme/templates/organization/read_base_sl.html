@@ -1,0 +1,61 @@
+{% extends "pagesl.html" %}
+{% block page_header %}{% endblock %}
+
+{% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Organizations') }}{% endblock %}
+{%block header_class %}{% endblock %}
+{% block title_text %} 
+  <h1 class="text-white">
+    {{ group_dict.display_name }} 
+  </h1>
+{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="breadcrumb-item">{% link_for _('Organizations'), named_route=group_type+'.index', class_='text-white' %}</li>
+  <li class="active breadcrumb-item">{% link_for group_dict.display_name|truncate(35), named_route=group_type+'.read', id=group_dict.name, class_='text-white' %}</li>
+{% endblock %}
+
+{% block fluid_content %}
+  <div class="my-3 lead">
+    {% if group_dict.description %}
+      <p class="description">
+        {{ h.markdown_extract(group_dict.description) }}
+      </p>
+    {% else %}
+      <p class="empty">{{ _('There is no description for this organization') }}</p>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{#
+  {% block content_primary_nav %}
+  {{ h.build_nav_icon(group_type + '.read', _('Datasets'), id=group_dict.name, icon='sitemap') }}
+  {{ h.build_nav_icon(group_type + '.activity', _('Activity Stream'), id=group_dict.name, offset=0, icon='clock-o') }}
+  {{ h.build_nav_icon(group_type + '.about', _('About'), id=group_dict.name, icon='info-circle') }}
+{% endblock %}
+#}
+{% block page_primary_action %}{% endblock %}
+{% block secondary_content %}
+  {% block content_action %}
+    {% if h.check_access('organization_update', {'id': group_dict.id}) %}
+      <div class="mb-2">
+        {% link_for _('Edit Organization'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-secondary w-100', icon='wrench' %}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+
+  {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
+    <div class="my-2">
+      {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+    </div>
+  {% endif %}
+
+
+  {# {% snippet 'snippets/organization.html', organization=group_dict, show_nums=true, group_type=group_type %} #}
+  {% block organization_facets %}{% endblock %}
+{% endblock %}
+
+{% block links %}
+  {{ super() }}
+  {% include "organization/snippets/feeds.html" %}
+{% endblock %}
