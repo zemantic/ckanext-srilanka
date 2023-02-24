@@ -1,9 +1,15 @@
 <div x-data="categoriesApp()" x-init="categories = fetchCategories()">
   <div class="container">
     <div class="row justiry-content-center">
-      <template x-for="category in categories">
-        <li x-text="category.title"></li>
-      </template>
+      <div class="col-md-11">
+        <div class="row">
+          <template x-for="category in categories">
+            <div class="col-md-4">
+              <h4><a x-bind:href="bindLink(category.name)" x-text="category.title"></a></h4>
+            </div>
+          </template>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -19,7 +25,10 @@
 
   const categoriesApp = () => {
     return {
-      categories: []
+      categories: [],
+      bindLink: (url) => {
+        return `/group/${url}`
+      }
     };
   };
 </script>
