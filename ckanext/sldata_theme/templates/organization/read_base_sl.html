@@ -34,13 +34,17 @@
 {% block secondary_content %}
   {% block content_action %}
     {% if h.check_access('organization_update', {'id': group_dict.id}) %}
-      {% link_for _('Edit Organization'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-secondary w-100', icon='wrench' %}
+      <div class="my-2">
+        {% link_for _('Edit Organization'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-secondary w-100', icon='wrench' %}
+      </div>
     {% endif %}
   {% endblock %}
 
   {% block page_primary_action %}
     {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
-      {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+      <div class="my-2">
+        {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+      </div>
     {% endif %}
   {% endblock %}
 
