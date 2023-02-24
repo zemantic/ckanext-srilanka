@@ -6,6 +6,17 @@
   <h1>{{ group_dict.display_name }}</h1>
 {% endblock %}
 
+{% block fluid_content %}
+  <div class="my-3 lead">
+    {% if group_dict.description %}
+      {{ h.markdown_extract(group_dict.description) }}
+      <p class="read-more">
+        {% link_for _('read more'), named_route='group.about', id=group_dict.name %}
+      </p>
+    {% endif %}
+  </div>
+{% endblock %}
+
 {% block breadcrumb_content %}
   <li class="breadcrumb-item">{% link_for _('Groups'), named_route=group_type+'.index', class_='text-white' %}</li>
   <li class="active breadcrumb-item">{% link_for group_dict.display_name|truncate(35), named_route=group_type+'.read', id=group_dict.name, class_='text-white' %}</li>
