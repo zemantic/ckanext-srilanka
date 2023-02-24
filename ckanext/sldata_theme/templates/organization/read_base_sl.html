@@ -33,7 +33,7 @@
   {{ h.build_nav_icon(group_type + '.about', _('About'), id=group_dict.name, icon='info-circle') }}
 {% endblock %}
 #}
-
+ {% block page_primary_action %}{% endblock %}
 {% block secondary_content %}
   {% block content_action %}
     {% if h.check_access('organization_update', {'id': group_dict.id}) %}
@@ -43,13 +43,13 @@
     {% endif %}
   {% endblock %}
 
-  {% block page_primary_action %}
-    {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
-      <div class="my-2">
-        {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
-      </div>
-    {% endif %}
-  {% endblock %}
+
+  {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
+    <div class="my-2">
+      {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+    </div>
+  {% endif %}
+
 
   {# {% snippet 'snippets/organization.html', organization=group_dict, show_nums=true, group_type=group_type %} #}
   {% block organization_facets %}{% endblock %}
