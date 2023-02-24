@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row justiry-content-center">
       <div class="col-md-11">
-        <div class="row">
+        <div class="row my-4">
           <template x-for="category in categories">
             <div class="col-md-4">
-              <h4><a x-bind:href="bindLink(category.name)" x-text="category.title"></a></h4>
+              <h5><a class="text-decoration-none" x-bind:href="bindLink(category.name)" x-text="category.title"></a></h5>
             </div>
           </template>
         </div>
