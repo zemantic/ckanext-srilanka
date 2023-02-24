@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justiry-content-center">
       <template x-for="category in categories">
-        <li>{{category.title}}</li>
+        <li x-text="category.title"></li>
       </template>
     </div>
   </div>
