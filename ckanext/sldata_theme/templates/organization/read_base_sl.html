@@ -25,6 +25,16 @@
   {{ h.build_nav_icon(group_type + '.about', _('About'), id=group_dict.name, icon='info-circle') }}
 {% endblock %}
 
+<div class="my-3 lead">
+  {% if group_dict.description %}
+    <p class="description">
+      {{ h.markdown_extract(group_dict.description) }}
+    </p>
+  {% else %}
+    <p class="empty">{{ _('There is no description for this organization') }}</p>
+  {% endif %}
+</div>
+
 {% block secondary_content %}
   {% snippet 'snippets/organization.html', organization=group_dict, show_nums=true, group_type=group_type %}
   {% block organization_facets %}{% endblock %}
