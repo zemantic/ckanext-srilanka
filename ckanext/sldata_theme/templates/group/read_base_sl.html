@@ -35,7 +35,7 @@
 
 {% block secondary_content %}
   {% if h.check_access('group_update', {'id': group_dict.id}) %}
-    {% link_for _('Manage'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-default', icon='wrench' %}
+    {% link_for _('Edit Category'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-secondary w-100', icon='wrench' %}
   {% endif %}
   {# {% snippet "group/snippets/info.html", group=group_dict, show_nums=true %} #}
 {% endblock %}
