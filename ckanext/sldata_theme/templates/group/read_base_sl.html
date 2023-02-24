@@ -2,6 +2,10 @@
 
 {% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Groups') }}{% endblock %}
 
+{% block title_text %}
+  <h1>{{ group_dict.display_name }}</h1>
+{% endblock %}
+
 {% block breadcrumb_content %}
   <li class="breadcrumb-item">{% link_for _('Groups'), named_route=group_type+'.index', class_='text-white' %}</li>
   <li class="active breadcrumb-item">{% link_for group_dict.display_name|truncate(35), named_route=group_type+'.read', id=group_dict.name, class_='text-white' %}</li>
