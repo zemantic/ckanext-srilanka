@@ -2,10 +2,14 @@
 
 {% block subtitle %}{{ group_dict.display_name }} {{ g.template_title_delimiter }} {{ _('Organizations') }}{% endblock %}
 
-{% block title_text %} {{ group_dict.display_name }} {% endblock %}
+{% block title_text %} 
+  <h1 class="text-white">
+    {{ group_dict.display_name }} 
+  </h1>
+{% endblock %}
 
 {% block breadcrumb_content %}
-  <li>{% link_for _('Organizations'), named_route=group_type+'.index' %}</li>
+  <li class="breadcrumb-item">{% link_for _('Organizations'), named_route=group_type+'.index', class_='text-white' %}</li>
   <li class="active breadcrumb-item">{% link_for group_dict.display_name|truncate(35), named_route=group_type+'.read', id=group_dict.name, class_='text-white' %}</li>
 {% endblock %}
 
