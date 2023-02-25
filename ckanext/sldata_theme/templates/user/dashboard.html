@@ -44,6 +44,10 @@
  {% endblock %}   
  {% block page_header %}{% endblock %}
 
+{% block page_heading %}
+  {{ _('News feed') }}
+{% endblock %}
+
 {% block primary %}
   <article class="module">
     <div class="module-content">
@@ -54,13 +58,11 @@
       {% endif %}
       {% block primary_content_inner %}
         <div data-module="dashboard">
-          {% snippet 'user/snippets/followee_dropdown.html', context=dashboard_activity_stream_context, followees=followee_list %}
-          <h2 class="page-heading">
-            {% block page_heading %}
-              {{ _('News feed') }}
-            {% endblock %}
+          {# TODO: Customize folowee doropdown #}
+          {# {% snippet 'user/snippets/followee_dropdown.html', context=dashboard_activity_stream_context, followees=followee_list %} #}
+          <h3>
             <small>{{ _("Activity from items that I'm following") }}</small>
-          </h2>
+          </h3>
           {% snippet 'snippets/activity_stream_sl.html', activity_stream=dashboard_activity_stream %}
         </div>
       {% endblock %}
