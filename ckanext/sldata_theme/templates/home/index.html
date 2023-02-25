@@ -1,4 +1,8 @@
-{% extends "base.html" %} {% block styles %}
+{% extends "base.html" %} 
+{% block styles %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
@@ -20,6 +24,12 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 ></script>
+<script 
+  src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.11.1/cdn.js" 
+  integrity="sha512-h2aNjnxfiJSH8nUAizyHlivjczoT8LdauKF+L4ZunZbQj078qiCGey5vKNKHO/yDf3BvLQkhoxEqhXBTBG37Cw==" 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer">
+</script>
 
 {% endblock %} {% block page %} {% block maintag %}{% endblock %} {% block
 toolbar %}{% endblock %} {% block header %} {% snippet "header_new.html" %} {%

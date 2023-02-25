@@ -53,3 +53,10 @@ h6 {
 .fw-semi-bold {
   font-weight: 600;
 }
+
+.ckan-link-success {
+  color: $colorPrimary;
+  &:hover {
+    color: darken($color: $colorPrimary, $amount: 10);
+  }
+}
