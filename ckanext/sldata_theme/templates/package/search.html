@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block title_text %}
-  {% if q%}
+  {% if q %}
     <h1 class="text-white capitalized">{{q}}</h1>
-  {% elif %}
+  {% else %}
     <h1 class="text-white capitalized">{{ dataset_type.title }}</h1>
   {% endif %}
 {% endblock %}
