@@ -13,7 +13,7 @@
 </li>
 #}
 
-<div class="card">
+<div class="card my-2">
   <div class="card-body">
     <h5 class="card-title">
       {{ _('{actor}').format(
@@ -23,10 +23,10 @@
     <p class="card-subtitle mb-2 text-muted">
       {{ h.time_ago_from_timestamp(activity.timestamp) }} 
     </p>
-    <div class="card-body">
+    <p class="card-text">
       Created the group {{ _('{group}').format(
       group=ah.group(activity)
     )|safe }}
-    </div>
+    </p>
   </div>
 </div>
