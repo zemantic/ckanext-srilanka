@@ -13,19 +13,20 @@
 </li>
 #}
 
-{% set actor=ah.activity(activity) %}
-{% set group=ah.group(activity) %}
-
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">
-      {actor} 
+      {{ _('{actor}').format(
+          actor=ah.actor(activity)
+        )|safe }}
     </h5>
     <p class="card-subtitle mb-2 text-muted">
       {{ h.time_ago_from_timestamp(activity.timestamp) }} 
     </p>
     <div class="card-body">
-      Created the group {group}
+      Created the group {{ _('{group}').format(
+      group=ah.group(activity)
+    )|safe }}
     </div>
   </div>
 </div>
