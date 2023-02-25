@@ -12,7 +12,7 @@
   {% if q %}
     <h1 class="text-white capitalized">{{q}}</h1>
   {% else %}
-    <h1 class="text-white capitalized">{{ dataset_type.title() }}</h1>
+    <h1 class="text-white capitalized">{{ dataset_type.title() + 's' }}</h1>
   {% endif %}
 {% endblock %}
 
