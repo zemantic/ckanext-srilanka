@@ -17,21 +17,18 @@
 </div>
 {% endblock %}
 
+{% block content_primary_nav %}    
+    <ul class="nav nav-tabs">
+      {{ h.build_nav_icon('dashboard.index', _('News feed'), icon='list') }}
+      {{ h.build_nav_icon('dashboard.datasets', _('My Datasets'), icon='sitemap') }}
+      {{ h.build_nav_icon('dashboard.organizations', _('My Organizations'), icon='building-o') }}
+      {{ h.build_nav_icon('dashboard.groups', _('My Groups'), icon='users') }}
+    </ul>
+ {% endblock %}   
+ {% block page_header %}{% endblock %}
+
 {% block primary %}
   <article class="module">
-    {% block page_header %}
-      <header class="module-content page-header hug">
-
-    {% block content_primary_nav %}    
-        <ul class="nav nav-tabs">
-          {{ h.build_nav_icon('dashboard.index', _('News feed'), icon='list') }}
-          {{ h.build_nav_icon('dashboard.datasets', _('My Datasets'), icon='sitemap') }}
-          {{ h.build_nav_icon('dashboard.organizations', _('My Organizations'), icon='building-o') }}
-          {{ h.build_nav_icon('dashboard.groups', _('My Groups'), icon='users') }}
-        </ul>
-     {% endblock %}   
-      </header>
-    {% endblock %}
     <div class="module-content">
       {% if self.page_primary_action() | trim %}
         <div class="page_primary_action">
