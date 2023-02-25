@@ -19,10 +19,18 @@
 
 {% block content_primary_nav %}    
     <ul class="nav nav-tabs">
-      {{ h.build_nav_icon('dashboard.index', _('News feed'), icon='list') }}
-      {{ h.build_nav_icon('dashboard.datasets', _('My Datasets'), icon='sitemap') }}
-      {{ h.build_nav_icon('dashboard.organizations', _('My Organizations'), icon='building-o') }}
-      {{ h.build_nav_icon('dashboard.groups', _('My Groups'), icon='users') }}
+      <li class="nav-item">
+        {% link_for 'dashboard.index', _('News feed'), icon='list', class_='nav-link text-white' %}
+      </li>
+      <li class="nav nav-tabs">
+        {% link_for 'dashboard.datasets', _('My Datasets'), icon='sitemap', class_='nav-link text-white' %}
+      </li>
+      <li class="nav nav-tabs">
+        {% link_for 'dashboard.organizations', _('My Organizations'), icon='building-o', class_='nav-link text-white' %}
+      </li>
+      <li>
+        {% link_for 'dashboard.groups', _('My Groups'), icon='users', class_='nav-link text-white' %}
+      </li>
     </ul>
  {% endblock %}   
  {% block page_header %}{% endblock %}
