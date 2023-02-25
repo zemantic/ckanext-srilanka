@@ -1,4 +1,4 @@
-{% extends "group/read_base.html" %}
+{% extends "group/read_base_sl.html" %}
 
 {% block primary_content_inner %}
   {% block groups_search_form %}
@@ -36,6 +36,6 @@
         {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, extras={'id':group_dict.id}) }}
       {% endfor %}
     </div>
-    <a class="close no-text hide-filters"><i class="fa fa-times-circle"></i><span class="text">close</span></a>
+    {# <a class="close no-text hide-filters"><i class="fa fa-times-circle"></i><span class="text">close</span></a> #}
   </div>
 {% endblock %}
