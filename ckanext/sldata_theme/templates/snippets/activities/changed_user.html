@@ -10,3 +10,24 @@
     </span>
   </p>
 </li>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ _('{actor}').format(
+        actor=ah.actor(activity)
+      )|safe }} 
+    </h5>
+    <p class="card-subtitle text-muted mb-2">
+      <span class="date" title="{{ h.render_datetime(activity.timestamp, with_hours=True) }}">
+        {{ h.time_ago_from_timestamp(activity.timestamp) }}
+      </span>
+    </p>
+    <p class="card-text">
+      <i class="fa-solid fa-circle-user"></i>
+      {{ _('Updated their profile').format(
+        actor=ah.actor(activity)
+      )|safe }}     
+    </p>
+  </div>
+</div>
