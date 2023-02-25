@@ -57,7 +57,7 @@ h6 {
   color: #00635a;
 }
 
-.hover-b-1 {
+.hover-b-1:hover {
   border-bottom: 2px solid #eee;
 }
 
