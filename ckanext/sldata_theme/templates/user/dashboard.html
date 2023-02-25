@@ -20,16 +20,16 @@
 {% block content_primary_nav %}    
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        {% link_for 'dashboard.index', _('News feed'), icon='list', class_='nav-link text-white' %}
+        {% link_for named_route='dashboard.index', _('News feed'), icon='list', class_='nav-link text-white active' %}
       </li>
       <li class="nav nav-tabs">
-        {% link_for 'dashboard.datasets', _('My Datasets'), icon='sitemap', class_='nav-link text-white' %}
+        {% link_for named_route='dashboard.datasets', _('My Datasets'), icon='sitemap', class_='nav-link text-white' %}
       </li>
       <li class="nav nav-tabs">
-        {% link_for 'dashboard.organizations', _('My Organizations'), icon='building-o', class_='nav-link text-white' %}
+        {% link_for named_route='dashboard.organizations', _('My Organizations'), icon='building-o', class_='nav-link text-white' %}
       </li>
       <li>
-        {% link_for 'dashboard.groups', _('My Groups'), icon='users', class_='nav-link text-white' %}
+        {% link_for named_route='dashboard.groups', _('My Groups'), icon='users', class_='nav-link text-white' %}
       </li>
     </ul>
  {% endblock %}   
