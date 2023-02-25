@@ -1,5 +1,5 @@
 {% set dataset_type = activity.data.package.type or 'dataset' %}
-
+{#
 <li class="item {{ activity.activity_type|replace(' ', '-')|lower }}">
   <i class="fa icon fa-sitemap"></i>
   <p>
@@ -22,4 +22,35 @@
       {% endif %}
     </span>
   </p>
-</li>
+</li> #}
+
+<div class="card my-3">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ _('{actor}').format(
+        actor=ah.actor(activity)
+      )|safe }}
+    </h5>
+    <p class="card-subtitle mb-2 text-muted">
+      <span class="date" title="{{ h.render_datetime(activity.timestamp, with_hours=True) }}">
+        {{ h.time_ago_from_timestamp(activity.timestamp) }}
+        {% if can_show_activity_detail %}
+          &nbsp;|&nbsp;
+          <a href="{{ h.url_for(dataset_type ~ '.read', id=activity.object_id, activity_id=activity.id) }}">
+            {{ _('View this version') }}
+          </a>
+          &nbsp;|&nbsp;
+          <a href="{{ h.url_for(dataset_type ~ '.changes', id=activity.id) }}">
+            {{ _('Changes') }}
+          </a>
+        {% endif %}
+      </span>
+    </p>
+    <p class="card-text">
+      <i class="fa-duotone fa-database"></i>
+      {{ _('Updated the dataset {dataset}').format(
+        dataset=ah.dataset(activity)
+      )|safe }}
+    </p>
+  </div>
+</div>
