@@ -3,21 +3,25 @@
 {% set user = g.userobj %}
 
 {% block breadcrumb_content %}
-  <li class="breadcrumb-item active"><a href="{{ h.url_for('dashboard.index') }}">{{ _('Dashboard') }}</a></li>
+  <li class="breadcrumb-item active"><a href="{{ h.url_for('dashboard.index') }}" class="text-white">{{ _('Dashboard') }}</a></li>
 {% endblock %}
 
 {% block title_text %}
-  <h1>Feed</h1>
+  <h1>News Feed</h1>
 {% endblock %}
 {% block secondary %}{% endblock %}
+
+{% block follow_button %}
+<div class="content_action">
+  {% link_for _('Profile settings'), named_route='user.edit', id=user.name, class_='btn btn-outline-light', icon='cog' %}
+</div>
+{% endblock %}
 
 {% block primary %}
   <article class="module">
     {% block page_header %}
       <header class="module-content page-header hug">
-        <div class="content_action">
-          {% link_for _('Profile settings'), named_route='user.edit', id=user.name, class_='btn btn-default', icon='cog' %}
-        </div>
+
     {% block content_primary_nav %}    
         <ul class="nav nav-tabs">
           {{ h.build_nav_icon('dashboard.index', _('News feed'), icon='list') }}
