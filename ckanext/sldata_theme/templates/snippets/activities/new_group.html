@@ -21,11 +21,13 @@
         )|safe }}
     </h5>
     <p class="card-subtitle mb-2 text-muted">
-      {{ h.time_ago_from_timestamp(activity.timestamp) }} 
+      <span class="date" title="{{ h.render_datetime(activity.timestamp, with_hours=True) }}">
+        {{ h.time_ago_from_timestamp(activity.timestamp) }}
+      </span>
     </p>
     <p class="card-text">
-      <i class="fa-regular fa-list-tree"></i>
-      Created the group {{ _('{group}').format(
+      <i class="fa-solid fa-list-tree"></i>
+      {{ _('Created the category {group}').format(
       group=ah.group(activity)
     )|safe }}
     </p>
