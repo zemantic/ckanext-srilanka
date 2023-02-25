@@ -2,7 +2,8 @@
 
 {% block dashboard_activity_stream_context %}{% endblock %}
 
-{% block page_primary_action %}
+{% block page_primary_action %}{% endblock %}
+{% block secondary %} 
   {% if h.check_access('package_create') %}
     {% snippet 'snippets/add_dataset.html' %}
   {% endif %}
