@@ -18,18 +18,18 @@
 {% endblock %}
 
 {% block content_primary_nav %}    
-    <ul class="d-flex list-unstyled">
-      <li class="nav-item">
-        {% link_for named_route='dashboard.index', _('News feed'), icon='list', class_='nav-link text-white' %}
+    <ul class="nav nav-tabs">
+      <li class="nav-item haver-b-1">
+        {% link_for named_route='dashboard.index', _('News feed'), icon='list', class_='nav-link text-white bg-transparent' %}
       </li>
-      <li class="nav-item">
-        {% link_for named_route='dashboard.datasets', _('My Datasets'), icon='sitemap', class_='nav-link text-white' %}
+      <li class="nav-item hover-b-1">
+        {% link_for named_route='dashboard.datasets', _('My Datasets'), icon='sitemap', class_='nav-link text-white bg-transparent' %}
       </li>
-      <li class="nav-item">
-        {% link_for named_route='dashboard.organizations', _('My Organizations'), icon='building-o', class_='nav-link text-white' %}
+      <li class="nav-item hover-b-1">
+        {% link_for named_route='dashboard.organizations', _('My Organizations'), icon='building-o', class_='nav-link text-white bg-transparent' %}
       </li>
-      <li class="nav-item">
-        {% link_for named_route='dashboard.groups', _('My Groups'), icon='users', class_='nav-link text-white' %}
+      <li class="nav-item hover-b-1">
+        {% link_for named_route='dashboard.groups', _('My Groups'), icon='users', class_='nav-link text-white bg-transparent' %}
       </li>
     </ul>
  {% endblock %}   
