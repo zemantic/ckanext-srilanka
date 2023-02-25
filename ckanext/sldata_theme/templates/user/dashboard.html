@@ -3,9 +3,12 @@
 {% set user = g.userobj %}
 
 {% block breadcrumb_content %}
-  <li class="active"><a href="{{ h.url_for('dashboard.index') }}">{{ _('Dashboard') }}</a></li>
+  <li class="breadcrumb-item active"><a href="{{ h.url_for('dashboard.index') }}">{{ _('Dashboard') }}</a></li>
 {% endblock %}
 
+{% block title_text %}
+  <h1>Feed</h1>
+{% endblock %}
 {% block secondary %}{% endblock %}
 
 {% block primary %}
