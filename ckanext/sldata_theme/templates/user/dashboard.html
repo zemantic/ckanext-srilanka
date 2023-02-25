@@ -1,5 +1,14 @@
 {% extends "user/edit_base_sl.html" %}
 
+{% block styles %}
+  super()
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+  </style>
+{% endblock %}
+
 {% set user = g.userobj %}
 
 {% block breadcrumb_content %}
