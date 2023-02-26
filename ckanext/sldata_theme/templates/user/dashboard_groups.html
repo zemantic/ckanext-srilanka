@@ -2,9 +2,9 @@
 
 {% block dashboard_activity_stream_context %}{% endblock %}
 
-{% block page_primary_action %}
+{% block secondary_content %}
   {% if h.check_access('group_create') %}
-    {% link_for _('Add Group'), controller='group', action='new', class_="btn btn-primary", icon="plus-square" %}
+    {% link_for _('Add Group'), controller='group', action='new', class_="btn btn-secondary w-100", icon="plus-square" %}
   {% endif %}
 {% endblock %}
 
@@ -13,7 +13,7 @@
   {% set groups = h.groups_available(am_member=True) %}
   {% if groups %}
     <div class="wide">
-      {% snippet "group/snippets/group_list.html", groups=groups %}
+      {% snippet "group/snippets/group_list_sl.html", groups=groups %}
     </div>
   {% else %}
     <p class="empty">
