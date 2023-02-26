@@ -1,4 +1,4 @@
-<li class="item {{ activity.activity_type|replace(' ', '-')|lower }}">
+{# <li class="item {{ activity.activity_type|replace(' ', '-')|lower }}">
   <i class="fa icon fa-users"></i>
   <p>
     {{ _('{actor} started following {group}').format(
@@ -11,3 +11,25 @@
     </span>
   </p>
 </li>
+#}
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ _('{actor}').format(
+        actor=ah.actor(activity),
+      )|safe }}
+    </h5>
+    <p class="card-subtitle text-muted mb-2"> 
+      <span class="date" title="{{ h.render_datetime(activity.timestamp, with_hours=True) }}">
+        {{ h.time_ago_from_timestamp(activity.timestamp) }}
+      </span>
+    </p>
+    <p class="card-text">
+      <i class="fa-solid fa-circle-plus"></i>
+      {{ _('Started following {group}').format(
+        group=ah.group(activity)
+      )|safe }}
+    </p>
+  </div>
+</div>

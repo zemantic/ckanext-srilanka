@@ -1,4 +1,5 @@
-<li class="item {{ activity.activity_type|replace(' ', '-')|lower }}">
+{# 
+  <li class="item {{ activity.activity_type|replace(' ', '-')|lower }}">
   <i class="fa icon fa-user"></i>
   <p>
     {{ _('{actor} signed up').format(
@@ -10,3 +11,25 @@
     </span>
   </p>
 </li>
+#}
+
+<div class="card item {{ activity.activity_type|replace(' ', '-')|lower }}">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ _('{actor}').format(
+        actor=ah.actor(activity)
+      )|safe }}
+    </h5>
+    <p class="text-muted card-subtitle mb-2">
+      <span class="date" title="{{ h.render_datetime(activity.timestamp, with_hours=True) }}">
+        {{ h.time_ago_from_timestamp(activity.timestamp) }}
+      </span> 
+    </p>
+    <p class="card-text">
+      <i class="fa-solid fa-circle-user"></i>
+      {{ _('Signed up').format(
+        actor=ah.actor(activity)
+      )|safe }}
+    </p>
+  </div>
+</div>

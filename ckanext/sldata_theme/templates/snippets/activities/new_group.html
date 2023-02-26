@@ -1,5 +1,5 @@
-<li class="item {{ activity.activity_type|replace(' ', '-')|lower }}">
-  <i class="fa icon fa-users"></i>
+{# <li class="item {{ activity.activity_type|replace(' ', '-')|lower }}">
+  <i class="fa-regular fa-list-tree"></i>
   <p>
   {{ _('{actor} created the group {group}').format(
       actor=ah.actor(activity),
@@ -11,3 +11,25 @@
     </span>
   </p>
 </li>
+#}
+
+<div class="card my-3">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ _('{actor}').format(
+          actor=ah.actor(activity)
+        )|safe }}
+    </h5>
+    <p class="card-subtitle mb-2 text-muted">
+      <span class="date" title="{{ h.render_datetime(activity.timestamp, with_hours=True) }}">
+        {{ h.time_ago_from_timestamp(activity.timestamp) }}
+      </span>
+    </p>
+    <p class="card-text">
+      <i class="fa-solid fa-layer-group"></i>
+      {{ _('Created the category {group}').format(
+      group=ah.group(activity)
+    )|safe }}
+    </p>
+  </div>
+</div>

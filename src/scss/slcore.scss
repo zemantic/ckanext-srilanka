@@ -60,3 +60,10 @@ h6 {
     color: darken($color: $colorPrimary, $amount: 10);
   }
 }
+
+.hover-b-1 {
+  border-bottom: 2px solid transparent;
+  &:hover {
+    border-bottom: 2px solid #eee;
+  }
+}
