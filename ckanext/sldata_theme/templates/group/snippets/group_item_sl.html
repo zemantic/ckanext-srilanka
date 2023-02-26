@@ -28,7 +28,7 @@ Example:
     {% block description %}
       {% if group.description %}
         <p class="card-text">{{ h.markdown_extract(group.description, extract_length=80) }}</p>
-      {% elif %}
+      {% else %}
         <p class="card-text text-muted">No description</p>
       {% endif %}
     {% endblock %}
