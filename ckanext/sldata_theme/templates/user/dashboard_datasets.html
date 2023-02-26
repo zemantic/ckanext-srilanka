@@ -8,7 +8,7 @@
   {% endif %}
 {% endblock %}
 
-{% block primary_content_inner %}
+{% block primary_content %}
   <h2 class="hide-heading">{{ _('My Datasets') }}</h2>
   {% if user_dict.datasets %}
     {% snippet 'snippets/package_list.html', packages=user_dict.datasets %}
