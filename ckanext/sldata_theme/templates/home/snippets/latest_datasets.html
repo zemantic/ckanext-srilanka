@@ -1,0 +1,51 @@
+<div x-data="datasetApp()" x-init="datasets = fetchDatasets()">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-11">
+        <h3 class="h3 my-3">Latest Datasets</h3>
+        <template x-for="dataset in datasets">
+          <div class="pb-4 border-2 border-bottom">
+            <h5>
+              <a
+                class="ckan-link-success text-decoration-none"
+                x-bind:href="bindLink(dataset.id)"
+                x-text="dataset.title"
+              ></a>
+            </h5>
+            <p class="my-3" x-text="cropDescription(dataset.note)"></p>
+            <p
+              class="text-muted text-sm"
+              x-text="dataset.metadata_modified"
+            ></p>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const fetchDatasets = async () => {
+    const fetchData = await fetch("/zemantic/api/home/datasets");
+    if (fetchData.status !== 200) return;
+    const data = await fetchData.json();
+    const datasets = data.data;
+    return datasets;
+  };
+
+  const datasetApp = () => {
+    return {
+      datasets: [],
+      bindLink: (url) => {
+        return `/package/${id}`;
+      },
+      cropDescription(description) {
+        if (description.length > 200) {
+          return description.substring(0, 195) + "...";
+        } else {
+          return description;
+        }
+      },
+    };
+  };
+</script>
