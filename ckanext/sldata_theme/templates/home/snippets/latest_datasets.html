@@ -12,7 +12,7 @@
                 x-text="dataset.title"
               ></a>
             </h5>
-            <p class="my-3" x-text="cropDescription(dataset.note)"></p>
+            <p class="my-3" x-text="cropDescription(dataset.notes)"></p>
             <p
               class="text-muted text-sm"
               x-text="dataset.metadata_modified"
@@ -36,7 +36,7 @@
   const datasetApp = () => {
     return {
       datasets: [],
-      bindLink: (url) => {
+      bindLink: (id) => {
         return `/package/${id}`;
       },
       cropDescription(description) {
