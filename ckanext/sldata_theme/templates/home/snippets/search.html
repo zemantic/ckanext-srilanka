@@ -8,13 +8,13 @@ placeholder = _('e.g. Covid19') %}
     action="{% url_for 'dataset.search' %}"
   >
     <div
-      class="search-input bg-white d-flex has-feedback form-group search-giant"
+      class="search-input input-group-lg bg-white d-flex has-feedback input-group search-giant"
     >
       <input
         aria-label="{% block header_site_search_label %}{{ _('Search datasets') }}{% endblock %}"
         id="field-main-search"
         type="text"
-        class="form-control form-control-lg"
+        class="form-control"
         name="q"
         value=""
         autocomplete="off"
