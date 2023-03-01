@@ -37,8 +37,8 @@
     <div class="gap-2">
       {% if not url_is_edit %}
           {% block resource_item_explore_links %}
-          
-            <a class="btn btn-sm btn-outline-success" href="{{ url }}">
+            {#TODO: Fix reslurce preview after fixing data view issue #}
+            {# <a class="btn btn-sm btn-outline-success" href="{{ url }}">
               {% if not is_activity_archive and res.has_views %}
                 <i class="fa fa-bar-chart-o"></i>
                 {{ _('Preview') }}
@@ -47,7 +47,7 @@
                 {{ _('More information') }}
               {% endif %}
             </a>
-          
+            #}
           {% if res.url and h.is_url(res.url) %}
           
             <a class="btn btn-sm btn-outline-success" href="{{ res.url }}" class="resource-url-analytics" target="_blank">
