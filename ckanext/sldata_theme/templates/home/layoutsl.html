@@ -2,17 +2,17 @@
 <div class="home-hero">
   <div class="container">
     <div class="row p-5">
-      <div class="col">
+      <div class="col-md">
         <h2 class="fw-bold h1 text-white lh-base">
           Open Data Portal Ministry of Health Sri Lanka
         </h2>
         <a class="btn btn-outline-light">Learn more about data.health.gov.lk</a>
       </div>
-      <div class="col text-end">
-        <h2 class="fw-bold display-3 text-white">
+      <div class="col text-center text-md-end">
+        <h2 class="fw-bold mt-3 mt-md-0 display-1 text-white">
           {{ h.SI_number_span(stats.dataset_count) }}
         </h2>
-        <p class="fw-lighter text-white">Datasets</p>
+        <p class="fw-lighter display-6 text-white">Datasets</p>
         {% block search %} {% snippet 'home/snippets/search.html' %} {% endblock
         %}
       </div>
