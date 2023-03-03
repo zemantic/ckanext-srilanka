@@ -3,9 +3,16 @@
     <div class="row justify-content-center">
       <div class="col-md-11">
         <div class="row my-4">
+          <h3 class="h3 my-3">Active Categories</h3>
           <template x-for="category in categories">
             <div class="col-md-4 my-2">
-              <h5><a class="ckan-link-success text-decoration-none" x-bind:href="bindLink(category.name)" x-text="category.title"></a></h5>
+              <h5>
+                <a
+                  class="ckan-link-success text-decoration-none"
+                  x-bind:href="bindLink(category.name)"
+                  x-text="category.title"
+                ></a>
+              </h5>
             </div>
           </template>
         </div>
@@ -20,15 +27,15 @@
     if (fetchData.status !== 200) return;
     const data = await fetchData.json();
     const categories = data.data.categories;
-    return categories
-  }
+    return categories;
+  };
 
   const categoriesApp = () => {
     return {
       categories: [],
       bindLink: (url) => {
-        return `/group/${url}`
-      }
+        return `/group/${url}`;
+      },
     };
   };
 </script>
