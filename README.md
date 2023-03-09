@@ -1,8 +1,8 @@
 [![Tests](https://img.shields.io/badge/Tests-GitHub%20Actions-blue)](https://github.com/Zemantic/ckanext-sldata_theme/actions)
 
-![Cang](https://i.imgur.com/rc6NBNY.jpg)
+# c-Kang SL Open Data Portal Theme
 
-# ckanext-sldata_theme
+![Cang](https://i.imgur.com/rc6NBNY.jpg)
 
 The CKAN theme for the open data portal of the Ministry of Health Sri Lanka
 
@@ -34,11 +34,11 @@ To install ckanext-sldata_theme:
 2. Clone the source and install it on the virtualenv
 
    `bash
-  git clone https://github.com/Zemantic/ckanext-sldata_theme.git
-  cd ckanext-sldata_theme
-  pip install -e .
-  pip install -r requirements.txt
- `
+ git clone https://github.com/Zemantic/ckanext-sldata_theme.git
+ cd ckanext-sldata_theme
+ pip install -e .
+ pip install -r requirements.txt
+`
 
 3. Add `sldata_theme` to the `ckan.plugins` setting in your CKAN
    config file (by default the config file is located at
@@ -76,7 +76,8 @@ To run the tests, do:
 
 ## Releasing a new version of ckanext-sldata_theme
 
-If ckanext-sldata_theme should be available on PyPI you can follow these steps to publish a new version:
+If c
+kanext-sldata_theme should be available on PyPI you can follow these steps to publish a new version:
 
 1.  Update the version number in the `setup.py` file. See [PEP 440](http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers) for how to choose version numbers.
 
