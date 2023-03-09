@@ -33,9 +33,8 @@ To install ckanext-sldata_theme:
 
 2.  Clone the source and install it on the virtualenv
 
-    `
-
-        git clone https://github.com/Zemantic/ckanext-sldata_theme.git
+    `bash
+    git clone https://github.com/Zemantic/ckanext-sldata_theme.git
 
         cd ckanext-sldata_theme
 
