@@ -33,16 +33,15 @@ To install ckanext-sldata_theme:
 
 2.  Clone the source and install it on the virtualenv
 
-    `bash
-    git clone https://github.com/Zemantic/ckanext-sldata_theme.git
+    ```bash
+        git clone https://github.com/Zemantic/ckanext-sldata_theme.git
 
         cd ckanext-sldata_theme
 
         pip install -e .
 
         pip install -r requirements.txt
-
-    `
+    ```
 
 3.  Add `sldata_theme` to the `ckan.plugins` setting in your CKAN
     config file (by default the config file is located at
