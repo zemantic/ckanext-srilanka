@@ -27,26 +27,31 @@ config settings.
 
 To install ckanext-sldata_theme:
 
-1. Activate your CKAN virtual environment, for example:
+1.  Activate your CKAN virtual environment, for example:
 
-   . /usr/lib/ckan/default/bin/activate
+    . /usr/lib/ckan/default/bin/activate
 
-2. Clone the source and install it on the virtualenv
+2.  Clone the source and install it on the virtualenv
 
-   `bash
- git clone https://github.com/Zemantic/ckanext-sldata_theme.git
- cd ckanext-sldata_theme
- pip install -e .
- pip install -r requirements.txt
-`
+    `
 
-3. Add `sldata_theme` to the `ckan.plugins` setting in your CKAN
-   config file (by default the config file is located at
-   `/etc/ckan/default/ckan.ini`).
+        git clone https://github.com/Zemantic/ckanext-sldata_theme.git
 
-4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
+        cd ckanext-sldata_theme
 
-   sudo supervisorctrl restart all
+        pip install -e .
+
+        pip install -r requirements.txt
+
+    `
+
+3.  Add `sldata_theme` to the `ckan.plugins` setting in your CKAN
+    config file (by default the config file is located at
+    `/etc/ckan/default/ckan.ini`).
+
+4.  Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
+
+    sudo supervisorctrl restart all
 
 ## Config settings
 
