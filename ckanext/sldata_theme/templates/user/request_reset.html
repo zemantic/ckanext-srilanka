@@ -3,7 +3,7 @@
 {% block subtitle %}{{ _('Reset your password') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active breadcrumb-item">{% link_for _('Password Reset'), named_route='user.request_reset' %}</li>
+  <li class="active breadcrumb-item">{% link_for _('Password Reset'), named_route='user.request_reset', class_="text-white" %}</li>
 {% endblock %}
 
 {% block primary_content %}
