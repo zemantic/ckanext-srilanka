@@ -121,5 +121,6 @@
     {# make sure there are no calls to `asset` tag after this point #}
     {{ h.render_assets('style') }}
     {{ h.render_assets('script') }}
+    {% block analytics %}{% endblock %}
   </body>
 </html>
