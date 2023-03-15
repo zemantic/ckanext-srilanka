@@ -189,3 +189,7 @@
   {% endif %}
   {{ super() }}
 {% endblock -%}
+
+{% block %}
+  {% snippet 'snippets/google_analytics.html' %}
+{% endblock %}
